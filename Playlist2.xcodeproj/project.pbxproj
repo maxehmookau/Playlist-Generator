@@ -1,0 +1,359 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		503755CA147FF0E9001870C9 /* OptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 503755C8147FF0E9001870C9 /* OptionsViewController.m */; };
+		503755CB147FF0E9001870C9 /* OptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 503755C9147FF0E9001870C9 /* OptionsViewController.xib */; };
+		503755D0147FF873001870C9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503755CF147FF873001870C9 /* AVFoundation.framework */; };
+		503755D7147FFA16001870C9 /* InputRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 503755D6147FFA16001870C9 /* InputRecorder.m */; };
+		50A1E5C2147FE4AF005F5340 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E5C1147FE4AF005F5340 /* UIKit.framework */; };
+		50A1E5C4147FE4AF005F5340 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E5C3147FE4AF005F5340 /* Foundation.framework */; };
+		50A1E5C6147FE4AF005F5340 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50A1E5C5147FE4AF005F5340 /* CoreGraphics.framework */; };
+		50A1E5CC147FE4AF005F5340 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E5CA147FE4AF005F5340 /* InfoPlist.strings */; };
+		50A1E5CE147FE4AF005F5340 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E5CD147FE4AF005F5340 /* main.m */; };
+		50A1E5D2147FE4AF005F5340 /* playlist2AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E5D1147FE4AF005F5340 /* playlist2AppDelegate.m */; };
+		50A1E5E1147FE4FF005F5340 /* IdentifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50A1E5DF147FE4FF005F5340 /* IdentifyViewController.m */; };
+		50A1E5E2147FE4FF005F5340 /* IdentifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E5E0147FE4FF005F5340 /* IdentifyViewController.xib */; };
+		50A1E5EB147FE739005F5340 /* leather@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E5E9147FE739005F5340 /* leather@2x.jpg */; };
+		50A1E5EC147FE739005F5340 /* leather.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 50A1E5EA147FE739005F5340 /* leather.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		503755C7147FF0E9001870C9 /* OptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OptionsViewController.h; sourceTree = "<group>"; };
+		503755C8147FF0E9001870C9 /* OptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OptionsViewController.m; sourceTree = "<group>"; };
+		503755C9147FF0E9001870C9 /* OptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OptionsViewController.xib; sourceTree = "<group>"; };
+		503755CF147FF873001870C9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		503755D5147FFA16001870C9 /* InputRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputRecorder.h; sourceTree = "<group>"; };
+		503755D6147FFA16001870C9 /* InputRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputRecorder.m; sourceTree = "<group>"; };
+		50A1E5BD147FE4AF005F5340 /* Playlist2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Playlist2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		50A1E5C1147FE4AF005F5340 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		50A1E5C3147FE4AF005F5340 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		50A1E5C5147FE4AF005F5340 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		50A1E5C9147FE4AF005F5340 /* Playlist2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Playlist2-Info.plist"; sourceTree = "<group>"; };
+		50A1E5CB147FE4AF005F5340 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		50A1E5CD147FE4AF005F5340 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		50A1E5CF147FE4AF005F5340 /* Playlist2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Playlist2-Prefix.pch"; sourceTree = "<group>"; };
+		50A1E5D0147FE4AF005F5340 /* playlist2AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = playlist2AppDelegate.h; sourceTree = "<group>"; };
+		50A1E5D1147FE4AF005F5340 /* playlist2AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = playlist2AppDelegate.m; sourceTree = "<group>"; };
+		50A1E5DE147FE4FF005F5340 /* IdentifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IdentifyViewController.h; sourceTree = "<group>"; };
+		50A1E5DF147FE4FF005F5340 /* IdentifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IdentifyViewController.m; sourceTree = "<group>"; };
+		50A1E5E0147FE4FF005F5340 /* IdentifyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IdentifyViewController.xib; sourceTree = "<group>"; };
+		50A1E5E9147FE739005F5340 /* leather@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "leather@2x.jpg"; path = "Playlist2/leather@2x.jpg"; sourceTree = "<group>"; };
+		50A1E5EA147FE739005F5340 /* leather.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = leather.jpg; path = Playlist2/leather.jpg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		50A1E5BA147FE4AF005F5340 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				503755D0147FF873001870C9 /* AVFoundation.framework in Frameworks */,
+				50A1E5C2147FE4AF005F5340 /* UIKit.framework in Frameworks */,
+				50A1E5C4147FE4AF005F5340 /* Foundation.framework in Frameworks */,
+				50A1E5C6147FE4AF005F5340 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		503755C5147FF0C6001870C9 /* Options View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				503755C7147FF0E9001870C9 /* OptionsViewController.h */,
+				503755C8147FF0E9001870C9 /* OptionsViewController.m */,
+				503755C9147FF0E9001870C9 /* OptionsViewController.xib */,
+			);
+			name = "Options View Controllers";
+			sourceTree = "<group>";
+		};
+		503755D8147FFA1F001870C9 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				50A1E5D0147FE4AF005F5340 /* playlist2AppDelegate.h */,
+				50A1E5D1147FE4AF005F5340 /* playlist2AppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		503755D9147FFA2C001870C9 /* Input Recorder */ = {
+			isa = PBXGroup;
+			children = (
+				503755D5147FFA16001870C9 /* InputRecorder.h */,
+				503755D6147FFA16001870C9 /* InputRecorder.m */,
+			);
+			name = "Input Recorder";
+			sourceTree = "<group>";
+		};
+		50A1E5B2147FE4AF005F5340 = {
+			isa = PBXGroup;
+			children = (
+				50A1E5ED147FE73D005F5340 /* Images */,
+				50A1E5E3147FE505005F5340 /* View Controllers */,
+				50A1E5C7147FE4AF005F5340 /* Playlist2 */,
+				50A1E5C0147FE4AF005F5340 /* Frameworks */,
+				50A1E5BE147FE4AF005F5340 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		50A1E5BE147FE4AF005F5340 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				50A1E5BD147FE4AF005F5340 /* Playlist2.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		50A1E5C0147FE4AF005F5340 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				503755CF147FF873001870C9 /* AVFoundation.framework */,
+				50A1E5C1147FE4AF005F5340 /* UIKit.framework */,
+				50A1E5C3147FE4AF005F5340 /* Foundation.framework */,
+				50A1E5C5147FE4AF005F5340 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50A1E5C7147FE4AF005F5340 /* Playlist2 */ = {
+			isa = PBXGroup;
+			children = (
+				503755D8147FFA1F001870C9 /* App Delegate */,
+				503755D9147FFA2C001870C9 /* Input Recorder */,
+				50A1E5C8147FE4AF005F5340 /* Supporting Files */,
+			);
+			path = Playlist2;
+			sourceTree = "<group>";
+		};
+		50A1E5C8147FE4AF005F5340 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				50A1E5C9147FE4AF005F5340 /* Playlist2-Info.plist */,
+				50A1E5CA147FE4AF005F5340 /* InfoPlist.strings */,
+				50A1E5CD147FE4AF005F5340 /* main.m */,
+				50A1E5CF147FE4AF005F5340 /* Playlist2-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		50A1E5E3147FE505005F5340 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				503755C5147FF0C6001870C9 /* Options View Controllers */,
+				50A1E5E8147FE6D5005F5340 /* Identifying View Controllers */,
+			);
+			name = "View Controllers";
+			path = Playlist2;
+			sourceTree = "<group>";
+		};
+		50A1E5E8147FE6D5005F5340 /* Identifying View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				50A1E5DE147FE4FF005F5340 /* IdentifyViewController.h */,
+				50A1E5DF147FE4FF005F5340 /* IdentifyViewController.m */,
+				50A1E5E0147FE4FF005F5340 /* IdentifyViewController.xib */,
+			);
+			name = "Identifying View Controllers";
+			sourceTree = "<group>";
+		};
+		50A1E5ED147FE73D005F5340 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				50A1E5EE147FE74B005F5340 /* Backgrounds */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		50A1E5EE147FE74B005F5340 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				50A1E5E9147FE739005F5340 /* leather@2x.jpg */,
+				50A1E5EA147FE739005F5340 /* leather.jpg */,
+			);
+			name = Backgrounds;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		50A1E5BC147FE4AF005F5340 /* Playlist2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50A1E5DB147FE4AF005F5340 /* Build configuration list for PBXNativeTarget "Playlist2" */;
+			buildPhases = (
+				50A1E5B9147FE4AF005F5340 /* Sources */,
+				50A1E5BA147FE4AF005F5340 /* Frameworks */,
+				50A1E5BB147FE4AF005F5340 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Playlist2;
+			productName = Playlist2;
+			productReference = 50A1E5BD147FE4AF005F5340 /* Playlist2.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		50A1E5B4147FE4AF005F5340 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 50A1E5B7147FE4AF005F5340 /* Build configuration list for PBXProject "Playlist2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 50A1E5B2147FE4AF005F5340;
+			productRefGroup = 50A1E5BE147FE4AF005F5340 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				50A1E5BC147FE4AF005F5340 /* Playlist2 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		50A1E5BB147FE4AF005F5340 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50A1E5CC147FE4AF005F5340 /* InfoPlist.strings in Resources */,
+				50A1E5E2147FE4FF005F5340 /* IdentifyViewController.xib in Resources */,
+				50A1E5EB147FE739005F5340 /* leather@2x.jpg in Resources */,
+				50A1E5EC147FE739005F5340 /* leather.jpg in Resources */,
+				503755CB147FF0E9001870C9 /* OptionsViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		50A1E5B9147FE4AF005F5340 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50A1E5CE147FE4AF005F5340 /* main.m in Sources */,
+				50A1E5D2147FE4AF005F5340 /* playlist2AppDelegate.m in Sources */,
+				50A1E5E1147FE4FF005F5340 /* IdentifyViewController.m in Sources */,
+				503755CA147FF0E9001870C9 /* OptionsViewController.m in Sources */,
+				503755D7147FFA16001870C9 /* InputRecorder.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		50A1E5CA147FE4AF005F5340 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				50A1E5CB147FE4AF005F5340 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		50A1E5D9147FE4AF005F5340 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		50A1E5DA147FE4AF005F5340 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		50A1E5DC147FE4AF005F5340 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Playlist2/Playlist2-Prefix.pch";
+				INFOPLIST_FILE = "Playlist2/Playlist2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		50A1E5DD147FE4AF005F5340 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Playlist2/Playlist2-Prefix.pch";
+				INFOPLIST_FILE = "Playlist2/Playlist2-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		50A1E5B7147FE4AF005F5340 /* Build configuration list for PBXProject "Playlist2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50A1E5D9147FE4AF005F5340 /* Debug */,
+				50A1E5DA147FE4AF005F5340 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50A1E5DB147FE4AF005F5340 /* Build configuration list for PBXNativeTarget "Playlist2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50A1E5DC147FE4AF005F5340 /* Debug */,
+				50A1E5DD147FE4AF005F5340 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 50A1E5B4147FE4AF005F5340 /* Project object */;
+}
