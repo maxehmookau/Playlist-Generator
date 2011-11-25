@@ -1,5 +1,5 @@
 //
-//  OptionsViewController.h
+//  AnalyseViewController.h
 //  Playlist2
 //
 //  Created by Max Woolf on 25/11/2011.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
-@interface OptionsViewController : UIViewController
+@interface AnalyseViewController : UIViewController <MBProgressHUDDelegate>
 
 @end

@@ -17,11 +17,21 @@
     IBOutlet UIProgressView *progressView;
     IBOutlet UIActivityIndicatorView *activityIndicator;
     
-    //Background timer
+        //Metering Elements
+        IBOutlet UIImageView *meter0;
+        IBOutlet UIImageView *meter1;
+        IBOutlet UIImageView *meter2;
+        IBOutlet UIImageView *meter3;
+        IBOutlet UIImageView *meter4;
+        NSArray *meterObjects;  
+    
+    //Background timers
     NSTimer *progressTimer;
+    NSTimer *powerTimer;
     
     //Recorder
     InputRecorder *inputRecorder;
+    float averageVolume;
 }
 
 -(IBAction)recordButtonPressed:(id)sender;
