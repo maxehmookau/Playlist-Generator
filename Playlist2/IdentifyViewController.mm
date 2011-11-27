@@ -25,11 +25,12 @@
 -(IBAction)recordButtonPressed:(id)sender
 {
     //Begin counter
-    progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
+    progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
     powerTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
     
     //Alter UI elements
     [recordButton setTitle:@"Recording..." forState:UIControlStateNormal];
+    [recordButton setEnabled:NO];
     
     //Begin Recording - Don't need any parameters, this is all done for us.
     inputRecorder = [[InputRecorder alloc] initWithURL:nil settings:nil error:nil];
@@ -45,7 +46,7 @@
     {
         if([progressView progress] != 1.0)
         {
-            [progressView setProgress:[progressView progress] + 0.05];
+            [progressView setProgress:[progressView progress] + 0.0025];
         }else{
             //Stop everything
             [inputRecorder stop];
@@ -101,9 +102,10 @@
         }else if(averageVolume > -55)
         {
             [[meterObjects objectAtIndex:0]setHidden:NO];
+        }else{
+            [[meterObjects objectAtIndex:0]setHidden:NO];
         }
     }
-    
 }
 
 -(void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag
@@ -112,6 +114,7 @@
     {
         NSLog(@"Successful");
         AnalyseViewController *nextVC = [[AnalyseViewController alloc] init];
+        nextVC.recordingURL = inputRecorder.url;
         [self.navigationController pushViewController:nextVC animated:YES];
         [activityIndicator stopAnimating];
     }else{

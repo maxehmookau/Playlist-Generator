@@ -8,7 +8,30 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
+#import "AnalysisConnection.h"
+#import "SongProfileConnection.h"
 
-@interface AnalyseViewController : UIViewController <MBProgressHUDDelegate>
+@interface AnalyseViewController : UIViewController <MBProgressHUDDelegate, NSURLConnectionDelegate>
+{
+    NSURL *recordingURL;
+    MBProgressHUD *HUD;
+    AnalysisConnection *analysisConnection;
+    SongProfileConnection *songProfileConnection;
+    NSMutableData *receivedData;
+    NSString *jsonData;
+    NSString *trackID;
+    NSString *trackTitle;
+    NSString *trackArtist;
+    
+    //UI Elements
+    IBOutlet UITextField *artistField;
+    IBOutlet UITextField *trackField;
+}
+-(void)showHUD;
+-(NSString *)getEchoprintCode;
+-(void)getTrackData;
 
+@property (nonatomic, retain) NSURL *recordingURL;
+@property (nonatomic, retain) UITextField *artistField;
+@property (nonatomic, retain) UITextField *trackField;
 @end
