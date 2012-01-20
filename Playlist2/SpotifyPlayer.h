@@ -29,4 +29,5 @@
 -(void)setArray:(NSArray *)theArray;
 -(void)loginToSpotifyWithUsername:(NSString *)username andPassword:(NSString *)password;
 -(void)playTrackAtIndex:(int)index;
+-(void)getCoverImageForTrack:(SPTrack *)track;
 @end

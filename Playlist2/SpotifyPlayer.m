@@ -58,22 +58,30 @@
     [hud hide:YES];
     //Create a playback manager
     manager = [[SPPlaybackManager alloc] initWithPlaybackSession:[SPSession sharedSession]];
-    [self playTrackAtIndex:3];
+    [self playTrackAtIndex:0];
 }
 
 -(void)playTrackAtIndex:(int)index
 {
-    NSURL *trackURL = [NSURL URLWithString:@"spotify:track:4BMHp3DkI8VLsuB9Kr0pzu"];
+    NSURL *trackURL = [NSURL URLWithString:[trackURIs objectAtIndex:index]];
     SPTrack *track = [[SPSession sharedSession] trackForURL:trackURL];
     if (track != nil) {
         
         if (!track.isLoaded) {
-            NSLog(@"Try again");
+            NSLog(@"Still waiting for metadata to load... trying again.");
             [self performSelector:@selector(playTrackAtIndex:) withObject:nil afterDelay:0.1];
             return;
         }
-        //[artistLabel setText:[[track artists]objectAtIndex:0]];
+        
+        //Set metadata
+        SPArtist *currentArtist = [[track artists]objectAtIndex:index];
+        NSString *artistName = [[NSString alloc] initWithString:currentArtist.name];
+        [artistLabel setText:artistName];
         [trackLabel setText:[track name]];
+        
+        
+        [self getCoverImageForTrack:track];
+        
         NSError *error = nil;
         if (![manager playTrack:track error:&error]) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Cannot Play Track"
@@ -85,6 +93,19 @@
         }
         return;
     }
+}
+
+-(void)getCoverImageForTrack:(SPTrack *)track
+{
+    SPAlbum *currentAlbum = [track album]; 
+    if(![[track album]cover].loaded)
+    {
+        NSLog(@"Still waiting for cover art...");
+        [self performSelector:@selector(getCoverImageForTrack:) withObject:nil afterDelay:0.1];
+    }
+    SPImage *coverSPImage = [currentAlbum cover];
+    UIImage *coverImage = [coverSPImage image];
+    [coverImageView setImage:coverImage];
 }
 
 #pragma mark - View lifecycle
