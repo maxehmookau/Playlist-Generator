@@ -9,6 +9,7 @@
 #import "AnalyseViewController.h"
 #import "MBProgressHUD.h"
 #import "SBJson.h"
+#import "EchonestPlaylistParameterViewController.h"
 
 @implementation AnalyseViewController
 @synthesize recordingURL, artistField, trackField;
@@ -22,9 +23,8 @@ extern const char * GetPCMFromFile(char * filename);
     HUD.mode = MBProgressHUDModeIndeterminate;
     HUD.delegate = self;
     HUD.labelText = @"Identifying";
-    HUD.detailsLabelText = @"Generating echoprint code";
+    HUD.detailsLabelText = @"Please wait...";
 	HUD.square = YES;
-    HUD.dimBackground = YES;
     HUD.animationType = MBProgressHUDAnimationZoom;
     [HUD show:YES];
 }
@@ -42,15 +42,11 @@ extern const char * GetPCMFromFile(char * filename);
 -(void)connectToEchonest
 {
     analysisConnection = [[AnalysisConnection alloc] initWithRequest:nil delegate:self echoprintCode:[self getEchoprintCode]];
-    HUD.detailsLabelText = @"Querying echonest database";
     [analysisConnection start];
-    HUD.detailsLabelText = @"Waiting for response";
 }
 
 -(void)getTrackID
-{
-    HUD.detailsLabelText = @"";
-    
+{    
     SBJsonParser *jsonParser = [[SBJsonParser alloc] init];
     NSError *error = nil;
     NSDictionary *jsonObjects = [jsonParser objectWithString:jsonData error:&error];
@@ -64,6 +60,8 @@ extern const char * GetPCMFromFile(char * filename);
         HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross.png"]];
         HUD.labelText = @"No Match Found";
         trackID = @"No-Match";
+        UIAlertView *noMatchAlert = [[UIAlertView alloc] initWithTitle:@"No Match" message:@"Couldn't find a song that sounds like that, what do you want to do?" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Try again", @"Enter Manually", nil];
+        [noMatchAlert show];
     }else{
         NSDictionary *track = [songs objectAtIndex:0];
         NSString *localTrackID = [track objectForKey:@"id"];
@@ -93,7 +91,13 @@ extern const char * GetPCMFromFile(char * filename);
     trackTitle = [track objectForKey:@"title"];
     artistField.text = trackArtist;
     trackField.text = trackTitle;
-    
+}
+
+-(void)goButtonPressed:(id)sender
+{
+    EchonestPlaylistParameterViewController *nextVC = [[EchonestPlaylistParameterViewController alloc] init];
+    [nextVC setTrackID:trackID];
+    [self.navigationController pushViewController:nextVC animated:YES];
 }
 
 #pragma mark - Response methods
@@ -101,7 +105,6 @@ extern const char * GetPCMFromFile(char * filename);
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     //Just initate the NSData regardless of who made the request.
     [receivedData setLength:0];
-    HUD.detailsLabelText = @"Downloading response";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)d {
@@ -110,8 +113,6 @@ extern const char * GetPCMFromFile(char * filename);
     if(connection == analysisConnection)
     {
         //Deal with identifications
-        
-        HUD.detailsLabelText = @"Parsing response";
         [self getTrackID];
     }else if(connection == songProfileConnection)
     {

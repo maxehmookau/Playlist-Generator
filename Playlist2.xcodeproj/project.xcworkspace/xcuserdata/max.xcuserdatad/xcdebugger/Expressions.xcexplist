@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[DisplayPlaylistViewController connection:didReceiveData:]:DisplayPlaylistViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "(__NSCFConstantString *)receivedString">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "main:main.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[EchonestPlaylistParameterViewController connection:didReceiveResponse:]:EchonestPlaylistParameterViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[EchonestPlaylistParameterViewController connection:didReceiveData:]:EchonestPlaylistParameterViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[SpotifyURILookup initWithTrackName:artistName:delegate:]:SpotifyURILookup.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[SpotifyURILookup getSpotifyURIRequest]:SpotifyURILookup.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

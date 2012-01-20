@@ -26,10 +26,12 @@
     //UI Elements
     IBOutlet UITextField *artistField;
     IBOutlet UITextField *trackField;
+    IBOutlet UIButton *goButton;
 }
 -(void)showHUD;
 -(NSString *)getEchoprintCode;
 -(void)getTrackData;
+-(IBAction)goButtonPressed:(id)sender;
 
 @property (nonatomic, retain) NSURL *recordingURL;
 @property (nonatomic, retain) UITextField *artistField;
