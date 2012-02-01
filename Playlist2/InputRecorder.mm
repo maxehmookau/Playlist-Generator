@@ -36,7 +36,7 @@
     NSString *docsDir;
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);    
     docsDir = [dirPaths objectAtIndex:0];
-    NSString *soundFilePath = [docsDir stringByAppendingPathComponent:@"sound.aiff"];
+    NSString *soundFilePath = [docsDir stringByAppendingPathComponent:@"sound.wav"];
     NSURL *newURL = [[NSURL alloc] initFileURLWithPath:soundFilePath];
     return newURL;
 }

@@ -11,6 +11,7 @@
 #import "ExtractSpotifyURI.h"
 #import "URIToURLConverter.h"
 #import "SpotifyPlayer.h"
+#import "SBJson.h"
 
 @implementation DisplayPlaylistViewController
 
@@ -69,19 +70,50 @@
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    NSString *receivedString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    ExtractSpotifyURI *extractor = [[ExtractSpotifyURI alloc] initWithSpotifyJSONString:receivedString];
-    [URLs addObject:[extractor getURI]];
+    [receivedData appendData:data];
+}
+
+-(BOOL)resultsExistForJSON:(NSString *)jsonString
+{
+    SBJsonParser *parser = [[SBJsonParser alloc] init];
+    NSDictionary *rootDictionary = [parser objectWithString:jsonString];
+    NSDictionary *info = [rootDictionary valueForKey:@"info"];
+    NSNumber *numberOfResults = [info valueForKey:@"num_results"];
     
-    //When done, increase the connection number, and run the next connection
+    NSLog(@"%@", numberOfResults);
+    if([numberOfResults isEqualToNumber:[NSNumber numberWithInt:0]])
+    {
+        return NO;
+    }
+    return YES;
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSString *receivedString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+    //NSLog(@"%@", receivedString);
+    //Check if rate limiting kicked in... if it did, we have to wait 10 seconds. 
+    if([receivedString isEqualToString:@"You hit the rate limit, wait 10 seconds and try again"])
+    {
+        sleep(10);
+    //If not, check if results were available and add it to the array
+    }else if([self resultsExistForJSON:receivedString])
+    {
+        ExtractSpotifyURI *extractor = [[ExtractSpotifyURI alloc] initWithSpotifyJSONString:receivedString];
+        [URLs addObject:[extractor getURI]];
+    }
+    
+    //Chill out for 2 seconds, to stop rate limiting kicking in. (This is annoying.)
+    sleep(2);
+    //When done, increase the connection number, and run the next connection.
     currentConnectionNumber++;
-    //And sleep, spotify gets grumpy otherwise
-    sleep(3);
     if(currentConnectionNumber < [connections count])
     {
+        [receivedData setLength:0];
         SpotifyURILookup *nextConnection = [connections objectAtIndex:currentConnectionNumber];
         [nextConnection start];
     }else{
+        [hud hide:YES];
         UIAlertView *spotifyLoginAlert = [[UIAlertView alloc] initWithTitle:@"Login to Spotify" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: @"Login", nil];
         [spotifyLoginAlert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
         [spotifyLoginAlert show];
@@ -119,6 +151,13 @@
 
 - (void)viewDidLoad
 {
+    hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.view addSubview:hud];
+    [hud setMode:MBProgressHUDModeIndeterminate];
+    [hud setLabelText:@"Loading"];
+    [hud setDetailsLabelText:@"This might take a minute..."];
+    [hud show:YES];
+    receivedData = [[NSMutableData alloc] init];
     currentConnectionNumber = 0;
     URLs = [[NSMutableArray alloc] initWithCapacity:[artistList count]];
     //Create lots of activity indicators so that they are held within the VC

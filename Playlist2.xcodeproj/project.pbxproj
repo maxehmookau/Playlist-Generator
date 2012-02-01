@@ -9,10 +9,7 @@
 /* Begin PBXBuildFile section */
 		501542DA14C9B520001B842E /* SpotifyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 501542D814C9B520001B842E /* SpotifyPlayer.m */; };
 		501542DB14C9B520001B842E /* SpotifyPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 501542D914C9B520001B842E /* SpotifyPlayer.xib */; };
-		501542ED14C9BA4B001B842E /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 501542E914C9BA4B001B842E /* pause.png */; };
-		501542EE14C9BA4B001B842E /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 501542EA14C9BA4B001B842E /* pause@2x.png */; };
-		501542EF14C9BA4B001B842E /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 501542EB14C9BA4B001B842E /* play.png */; };
-		501542F014C9BA4B001B842E /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 501542EC14C9BA4B001B842E /* play@2x.png */; };
+		501C24E814D89BDE00B3BB49 /* nextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 501C24E714D89BDE00B3BB49 /* nextButton.png */; };
 		5022F1AB14C9E593007B864B /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5022F1A914C9E57A007B864B /* libCocoaLibSpotify.a */; };
 		5022F1B514C9E75F007B864B /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5022F1B414C9E75F007B864B /* libstdc++.dylib */; };
 		5022F1B714C9E76B007B864B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5022F1B614C9E76B007B864B /* CFNetwork.framework */; };
@@ -24,6 +21,11 @@
 		503755EB14801E6E001870C9 /* green.png in Resources */ = {isa = PBXBuildFile; fileRef = 503755E814801E6E001870C9 /* green.png */; };
 		503755EC14801E6E001870C9 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 503755E914801E6E001870C9 /* orange.png */; };
 		503755ED14801E6E001870C9 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 503755EA14801E6E001870C9 /* red.png */; };
+		503C99AF14D826680086AB91 /* EchonestAnalyseConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503C99AE14D826680086AB91 /* EchonestAnalyseConnection.mm */; };
+		504C856214D6F87800612036 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 504C855E14D6F87800612036 /* play.png */; };
+		504C856414D6F87800612036 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 504C856014D6F87800612036 /* pause.png */; };
+		504C856914D7181100612036 /* AddToPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C856714D7181100612036 /* AddToPlaylistViewController.m */; };
+		504C856A14D7181100612036 /* AddToPlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 504C856814D7181100612036 /* AddToPlaylistViewController.xib */; };
 		5056EBA5149BC68900335C9C /* ReadPlaylistSuggestions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5056EBA4149BC68900335C9C /* ReadPlaylistSuggestions.m */; };
 		50573FA6149A86510053B6C7 /* SpotifyURILookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 50573FA5149A86510053B6C7 /* SpotifyURILookup.m */; };
 		50573FAC149A8D430053B6C7 /* DisplayPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50573FAA149A8D430053B6C7 /* DisplayPlaylistViewController.m */; };
@@ -67,6 +69,7 @@
 		50DB0CD914CA0E4100659BB2 /* SPCircularBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DB0CD614CA0E4100659BB2 /* SPCircularBuffer.m */; };
 		50DB0CDA14CA0E4100659BB2 /* SPPlaybackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 50DB0CD814CA0E4100659BB2 /* SPPlaybackManager.m */; };
 		50E853D61494FF1F00C18F54 /* EchonestSimilarConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 50E853D51494FF1F00C18F54 /* EchonestSimilarConnection.m */; };
+		50E9F77F14CD888E0098F2F5 /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = 50E9F77E14CD888E0098F2F5 /* border.png */; };
 		50F023B91491179F00FE44D4 /* tick.png in Resources */ = {isa = PBXBuildFile; fileRef = 50F023B81491179F00FE44D4 /* tick.png */; };
 		50FA52E9148135BB00A95D3C /* cross2.png in Resources */ = {isa = PBXBuildFile; fileRef = 50FA52E7148135BB00A95D3C /* cross2.png */; };
 		50FA52ED1481428F00A95D3C /* SongProfileConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 50FA52EC1481428F00A95D3C /* SongProfileConnection.m */; };
@@ -93,10 +96,7 @@
 		501542D714C9B520001B842E /* SpotifyPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyPlayer.h; sourceTree = "<group>"; };
 		501542D814C9B520001B842E /* SpotifyPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyPlayer.m; sourceTree = "<group>"; };
 		501542D914C9B520001B842E /* SpotifyPlayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpotifyPlayer.xib; sourceTree = "<group>"; };
-		501542E914C9BA4B001B842E /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
-		501542EA14C9BA4B001B842E /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
-		501542EB14C9BA4B001B842E /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
-		501542EC14C9BA4B001B842E /* play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play@2x.png"; sourceTree = "<group>"; };
+		501C24E714D89BDE00B3BB49 /* nextButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextButton.png; sourceTree = "<group>"; };
 		5022F1A114C9E579007B864B /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "../../../../Downloads/spotify-cocoalibspotify-2e5a286/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
 		5022F1B314C9E66D007B864B /* appkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appkey.h; sourceTree = "<group>"; };
 		5022F1B414C9E75F007B864B /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
@@ -113,6 +113,13 @@
 		503755E814801E6E001870C9 /* green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = green.png; path = ../../../../Desktop/green.png; sourceTree = "<group>"; };
 		503755E914801E6E001870C9 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orange.png; path = ../../../../Desktop/orange.png; sourceTree = "<group>"; };
 		503755EA14801E6E001870C9 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red.png; path = ../../../../Desktop/red.png; sourceTree = "<group>"; };
+		503C99AD14D826670086AB91 /* EchonestAnalyseConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchonestAnalyseConnection.h; sourceTree = "<group>"; };
+		503C99AE14D826680086AB91 /* EchonestAnalyseConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EchonestAnalyseConnection.mm; sourceTree = "<group>"; };
+		504C855E14D6F87800612036 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		504C856014D6F87800612036 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		504C856614D7181100612036 /* AddToPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddToPlaylistViewController.h; sourceTree = "<group>"; };
+		504C856714D7181100612036 /* AddToPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddToPlaylistViewController.m; sourceTree = "<group>"; };
+		504C856814D7181100612036 /* AddToPlaylistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddToPlaylistViewController.xib; sourceTree = "<group>"; };
 		5056EBA3149BC68900335C9C /* ReadPlaylistSuggestions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadPlaylistSuggestions.h; sourceTree = "<group>"; };
 		5056EBA4149BC68900335C9C /* ReadPlaylistSuggestions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadPlaylistSuggestions.m; sourceTree = "<group>"; };
 		50573FA4149A86510053B6C7 /* SpotifyURILookup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyURILookup.h; sourceTree = "<group>"; };
@@ -190,6 +197,7 @@
 		50DB0CD814CA0E4100659BB2 /* SPPlaybackManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SPPlaybackManager.m; path = "../../../../../Desktop/ARC Playback Classes/SPPlaybackManager.m"; sourceTree = "<group>"; };
 		50E853D41494FF1F00C18F54 /* EchonestSimilarConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchonestSimilarConnection.h; sourceTree = "<group>"; };
 		50E853D51494FF1F00C18F54 /* EchonestSimilarConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EchonestSimilarConnection.m; sourceTree = "<group>"; };
+		50E9F77E14CD888E0098F2F5 /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border.png; sourceTree = "<group>"; };
 		50F023B81491179F00FE44D4 /* tick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tick.png; sourceTree = "<group>"; };
 		50FA52E7148135BB00A95D3C /* cross2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cross2.png; sourceTree = "<group>"; };
 		50FA52EB1481428F00A95D3C /* SongProfileConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SongProfileConnection.h; sourceTree = "<group>"; };
@@ -230,6 +238,9 @@
 				501542D714C9B520001B842E /* SpotifyPlayer.h */,
 				501542D814C9B520001B842E /* SpotifyPlayer.m */,
 				501542D914C9B520001B842E /* SpotifyPlayer.xib */,
+				504C856614D7181100612036 /* AddToPlaylistViewController.h */,
+				504C856714D7181100612036 /* AddToPlaylistViewController.m */,
+				504C856814D7181100612036 /* AddToPlaylistViewController.xib */,
 			);
 			name = "Spotify Player";
 			sourceTree = "<group>";
@@ -237,10 +248,9 @@
 		501542E814C9B5D0001B842E /* Player Images */ = {
 			isa = PBXGroup;
 			children = (
-				501542E914C9BA4B001B842E /* pause.png */,
-				501542EA14C9BA4B001B842E /* pause@2x.png */,
-				501542EB14C9BA4B001B842E /* play.png */,
-				501542EC14C9BA4B001B842E /* play@2x.png */,
+				504C855E14D6F87800612036 /* play.png */,
+				504C856014D6F87800612036 /* pause.png */,
+				50E9F77E14CD888E0098F2F5 /* border.png */,
 			);
 			name = "Player Images";
 			sourceTree = "<group>";
@@ -281,6 +291,8 @@
 				5094D1081480FD6700EFF0CD /* AnalysisConnection.mm */,
 				50FA52EB1481428F00A95D3C /* SongProfileConnection.h */,
 				50FA52EC1481428F00A95D3C /* SongProfileConnection.m */,
+				503C99AD14D826670086AB91 /* EchonestAnalyseConnection.h */,
+				503C99AE14D826680086AB91 /* EchonestAnalyseConnection.mm */,
 			);
 			name = Analysis;
 			sourceTree = "<group>";
@@ -466,6 +478,7 @@
 		50A1E5ED147FE73D005F5340 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				501C24E714D89BDE00B3BB49 /* nextButton.png */,
 				501542E814C9B5D0001B842E /* Player Images */,
 				503755EE14801E78001870C9 /* Record Meter */,
 				50A1E5EE147FE74B005F5340 /* Backgrounds */,
@@ -562,10 +575,11 @@
 				507E531014939DD50066DF21 /* EchonestPlaylistParameterViewController.xib in Resources */,
 				50573FAD149A8D430053B6C7 /* DisplayPlaylistViewController.xib in Resources */,
 				501542DB14C9B520001B842E /* SpotifyPlayer.xib in Resources */,
-				501542ED14C9BA4B001B842E /* pause.png in Resources */,
-				501542EE14C9BA4B001B842E /* pause@2x.png in Resources */,
-				501542EF14C9BA4B001B842E /* play.png in Resources */,
-				501542F014C9BA4B001B842E /* play@2x.png in Resources */,
+				50E9F77F14CD888E0098F2F5 /* border.png in Resources */,
+				504C856214D6F87800612036 /* play.png in Resources */,
+				504C856414D6F87800612036 /* pause.png in Resources */,
+				504C856A14D7181100612036 /* AddToPlaylistViewController.xib in Resources */,
+				501C24E814D89BDE00B3BB49 /* nextButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +623,8 @@
 				507C4C5E149E797E00A7EEE7 /* URIToURLConverter.m in Sources */,
 				501542DA14C9B520001B842E /* SpotifyPlayer.m in Sources */,
 				50DB0CDA14CA0E4100659BB2 /* SPPlaybackManager.m in Sources */,
+				504C856914D7181100612036 /* AddToPlaylistViewController.m in Sources */,
+				503C99AF14D826680086AB91 /* EchonestAnalyseConnection.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

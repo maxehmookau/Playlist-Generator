@@ -16,14 +16,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {    
-    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+    //[[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackOpaque];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     //self.viewController = [[playlist2ViewController alloc] initWithNibName:@"playlist2ViewController" bundle:nil];
     
     IdentifyViewController *viewController = [[IdentifyViewController alloc] init];
     UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:viewController];
-    [navCon setNavigationBarHidden: YES];
+    //[navCon setNavigationBarHidden: YES];
     self.window.rootViewController = navCon;
     
     [self.window makeKeyAndVisible];

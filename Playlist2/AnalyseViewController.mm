@@ -10,6 +10,7 @@
 #import "MBProgressHUD.h"
 #import "SBJson.h"
 #import "EchonestPlaylistParameterViewController.h"
+#import "EchonestAnalyseConnection.h"
 
 @implementation AnalyseViewController
 @synthesize recordingURL, artistField, trackField;
@@ -22,10 +23,9 @@ extern const char * GetPCMFromFile(char * filename);
     [self.navigationController.view addSubview:HUD];
     HUD.mode = MBProgressHUDModeIndeterminate;
     HUD.delegate = self;
+    HUD.dimBackground = YES;
     HUD.labelText = @"Identifying";
-    HUD.detailsLabelText = @"Please wait...";
-	HUD.square = YES;
-    HUD.animationType = MBProgressHUDAnimationZoom;
+    HUD.animationType = MBProgressHUDAnimationFade;
     [HUD show:YES];
 }
 
@@ -57,12 +57,18 @@ extern const char * GetPCMFromFile(char * filename);
     //Find out whether songs were matched
     if([songs count] == 0)
     {
-        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"cross.png"]];
-        HUD.labelText = @"No Match Found";
+        [analyseView setAlpha:1];
+        [goButton setAlpha:1];
+        [goButton setTitle:@"Generate Playlist" forState:UIControlStateNormal];
+        [HUD setLabelText:@"Analysing"];
+        [HUD setDetailsLabelText:@"This might take a while..."];
         trackID = @"No-Match";
-        UIAlertView *noMatchAlert = [[UIAlertView alloc] initWithTitle:@"No Match" message:@"Couldn't find a song that sounds like that, what do you want to do?" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Try again", @"Enter Manually", nil];
-        [noMatchAlert show];
+        echonestUpload = [[EchonestAnalyseConnection alloc] initWithFileURL:recordingURL.absoluteString delegate:self];
+        [echonestUpload start];
     }else{
+        [goButton setAlpha:1];
+        [goButton setTitle:@"Choose Options" forState:UIControlStateNormal];
+        [identifyView setAlpha:1];
         NSDictionary *track = [songs objectAtIndex:0];
         NSString *localTrackID = [track objectForKey:@"id"];
         trackID = localTrackID;
@@ -70,13 +76,59 @@ extern const char * GetPCMFromFile(char * filename);
         
         songProfileConnection = [[SongProfileConnection alloc] initWithRequest:nil delegate:self trackID:trackID];
         [songProfileConnection start];
-        
-        
-        HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tick.png"]];
         HUD.labelText = @"Match Found";
+        [HUD hide:YES afterDelay:1];
     }
-    HUD.mode = MBProgressHUDModeCustomView;
-    [HUD hide:YES afterDelay:2];
+    
+}
+
+-(void)getAnalysisDataOf:(NSString *)data
+{
+    SBJsonParser *jsonParser = [[SBJsonParser alloc] init];
+    NSError *error = nil;
+    NSDictionary *jsonObjects = [jsonParser objectWithString:data error:&error];
+    NSDictionary *response = [jsonObjects valueForKey:@"response"];
+    
+    //Check all is ok, then go ahead or show an error.
+    if([[[response valueForKey:@"status"]valueForKey:@"code"]isEqualToNumber:[NSNumber numberWithInt:0]])
+    {
+        NSDictionary *track = [response valueForKey:@"track"];
+        NSDictionary *audio_summary = [track valueForKey:@"audio_summary"];
+        tempo = [audio_summary valueForKey:@"tempo"];
+        danceability = [audio_summary valueForKey:@"danceability"];
+        key = [NSString stringWithFormat:@"%@", [audio_summary valueForKey:@"key"]];
+        mode = [NSString stringWithFormat:@"%@", [audio_summary valueForKey:@"mode"]];
+        energy = [audio_summary valueForKey:@"energy"];
+        timeSignature = [NSString stringWithFormat:@"%@", [audio_summary valueForKey:@"time_signature"]];
+        
+        [tempoSlider setValue:[tempo floatValue]];
+        [danceSlider setValue:[danceability floatValue]];
+        [energySlider setValue:[energy floatValue]];
+        [keyButton setTitle:[NSString stringWithFormat:@"%@ %@", [self convertNumberToKey:key], [self convertnumberToMode:mode]] forState:UIControlStateNormal];
+        [timeButton setTitle:timeSignature forState:UIControlStateNormal];
+        
+        
+    }else{
+        UIAlertView *fail = [[UIAlertView alloc] initWithTitle:@"That didn't work..." message:@"Echonest is having a bad day, come back later, sorry." delegate:self cancelButtonTitle:@"Alright, bro." otherButtonTitles: nil];
+        [fail show];
+        NSLog(@"Status Code: %@", [[response valueForKey:@"status"]valueForKey:@"code"]);
+    }
+}
+
+-(NSString *)convertnumberToMode:(NSString *)inputMode
+{
+    if([inputMode isEqualToString:@"0"])
+    {
+        return @"Minor";
+    }
+    return @"Major";
+}
+
+-(NSString *)convertNumberToKey:(NSString *)inputKey
+{
+    NSArray *keys = [[NSArray alloc] initWithObjects:@"C", @"C#", @"D", @"D#", @"E", @"F", @"F#", @"G", @"G#", @"A", @"A#", @"B", nil];
+    
+    return [keys objectAtIndex:[inputKey intValue]];
 }
 
 -(void)getTrackData
@@ -97,6 +149,7 @@ extern const char * GetPCMFromFile(char * filename);
 {
     EchonestPlaylistParameterViewController *nextVC = [[EchonestPlaylistParameterViewController alloc] init];
     [nextVC setTrackID:trackID];
+    [nextVC setTitle:@"Generate Playlist"];
     [self.navigationController pushViewController:nextVC animated:YES];
 }
 
@@ -108,7 +161,7 @@ extern const char * GetPCMFromFile(char * filename);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)d {
-    [receivedData setData:d];
+    [receivedData appendData:d];
     jsonData = [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding];
     if(connection == analysisConnection)
     {
@@ -117,8 +170,19 @@ extern const char * GetPCMFromFile(char * filename);
     }else if(connection == songProfileConnection)
     {
         [self getTrackData];
+    }else if(connection == echonestUpload)
+    {
+        [HUD hide:YES afterDelay:1];
+        NSLog(@"Getting Data");
+        NSLog(@"%@", [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding]);
+        [self getAnalysisDataOf:[[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding]];
     }
     
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+
 }
 
 #pragma mark - View lifecycle
@@ -138,7 +202,11 @@ extern const char * GetPCMFromFile(char * filename);
 
 - (void)viewDidLoad
 {
+    [self.navigationController setTitle:@"Identify"];
     [self showHUD];
+    [goButton setAlpha:0];
+    [identifyView setAlpha:0];
+    [analyseView setAlpha:0];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

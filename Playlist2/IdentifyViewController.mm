@@ -15,7 +15,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+         self.title = @"Recording";
     }
     return self;
 }
@@ -68,41 +68,28 @@
             [[meterObjects objectAtIndex:x]setHidden:YES];
         }
         
-        //Set values
         if(averageVolume > -5)
         {
-            [[meterObjects objectAtIndex:0]setHidden:NO];
-            [[meterObjects objectAtIndex:1]setHidden:NO];
-            [[meterObjects objectAtIndex:2]setHidden:NO];
-            [[meterObjects objectAtIndex:3]setHidden:NO];
             [[meterObjects objectAtIndex:4]setHidden:NO];
-            [[meterObjects objectAtIndex:5]setHidden:NO];
-        }else if(averageVolume > -15)
+        }
+        if(averageVolume > -15)
         {
-            [[meterObjects objectAtIndex:0]setHidden:NO];
-            [[meterObjects objectAtIndex:1]setHidden:NO];
-            [[meterObjects objectAtIndex:2]setHidden:NO];
-            [[meterObjects objectAtIndex:3]setHidden:NO];
             [[meterObjects objectAtIndex:4]setHidden:NO];
-        }else if(averageVolume > -25)
+        }
+        if(averageVolume > -25)
         {
-            [[meterObjects objectAtIndex:0]setHidden:NO];
-            [[meterObjects objectAtIndex:1]setHidden:NO];
-            [[meterObjects objectAtIndex:2]setHidden:NO];
             [[meterObjects objectAtIndex:3]setHidden:NO];
-        }else if(averageVolume > -35)
+        }
+        if(averageVolume > -35)
         {
-            [[meterObjects objectAtIndex:0]setHidden:NO];
-            [[meterObjects objectAtIndex:1]setHidden:NO];
             [[meterObjects objectAtIndex:2]setHidden:NO];
-        }else if(averageVolume > -45)
+        }
+        if(averageVolume > -45)
         {
-            [[meterObjects objectAtIndex:0]setHidden:NO];
             [[meterObjects objectAtIndex:1]setHidden:NO];
-        }else if(averageVolume > -55)
+        }
+        if(averageVolume > -55)
         {
-            [[meterObjects objectAtIndex:0]setHidden:NO];
-        }else{
             [[meterObjects objectAtIndex:0]setHidden:NO];
         }
     }

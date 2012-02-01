@@ -21,7 +21,6 @@
     return self;
 }
 
-
 -(NSURLRequest *)getRequest
 {
     float min_danceability = 0.0;
@@ -31,10 +30,10 @@
     }else{
         min_danceability = 0;
     }
-    #warning - Debug ON!
-    NSString *queryString = [[NSString alloc]initWithFormat:@"http://developer.echonest.com/api/v4/playlist/static?api_key=%s&type=song-radio&variety=%f&max_danceability=%f&min_danceability=%f&results=%i&song_id=SOLGISP128CB7B06E3", API_KEY, variety, danceability, min_danceability,noOfTracks];
+    //#warning - Debug ON!
+    //NSString *queryString = [[NSString alloc]initWithFormat:@"http://developer.echonest.com/api/v4/playlist/static?api_key=%s&type=song-radio&variety=%f&max_danceability=%f&min_danceability=%f&results=%i&song_id=SOVTCMW1315CD46878", API_KEY, variety, danceability, min_danceability,noOfTracks];
     
-//        queryString = [[NSString alloc]initWithFormat:@"http://developer.echonest.com/api/v4/playlist/static?api_key=%s&type=song-radio&variety=%f&max_danceability=%f&results=%i&song_id=%@", API_KEY, variety,danceability,noOfTracks,trackID];
+        NSString *queryString = [[NSString alloc]initWithFormat:@"http://developer.echonest.com/api/v4/playlist/static?api_key=%s&type=song-radio&variety=%f&max_danceability=%f&min_danceability=%f&results=%i&song_id=%@", API_KEY, variety, danceability, min_danceability,noOfTracks, trackID];
     
     
     NSLog(@"%@", queryString);

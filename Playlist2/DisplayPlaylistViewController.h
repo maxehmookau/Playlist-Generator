@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
 
 @interface DisplayPlaylistViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UIAlertViewDelegate>
 {
@@ -18,6 +19,7 @@
     NSMutableArray *URLs;
     
     IBOutlet UITableView *table;
+    MBProgressHUD *hud;
     
     int currentConnectionNumber;
     NSMutableArray *connections;
@@ -26,4 +28,5 @@
 }
 
 -(id)initWithArtistArray:(NSArray *)artists tracksArray:(NSArray *)tracks;
+-(BOOL)resultsExistForJSON:(NSString *)jsonString;
 @end
