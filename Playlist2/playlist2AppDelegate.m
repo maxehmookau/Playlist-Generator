@@ -23,7 +23,7 @@
     
     IdentifyViewController *viewController = [[IdentifyViewController alloc] init];
     UINavigationController *navCon = [[UINavigationController alloc] initWithRootViewController:viewController];
-    //[navCon setNavigationBarHidden: YES];
+    [navCon setNavigationBarHidden: YES];
     self.window.rootViewController = navCon;
     
     [self.window makeKeyAndVisible];

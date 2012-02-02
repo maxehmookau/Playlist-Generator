@@ -10,9 +10,10 @@
 #import "MBProgressHUD.h"
 #import "ReadPlaylistSuggestions.h"
 #import "DisplayPlaylistViewController.h"
+#import "AnalysedPlaylistConnection.h"
 
 @implementation EchonestPlaylistParameterViewController
-
+@synthesize trackWasIdentified;
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -27,6 +28,14 @@
     if(songID != inputID)
     {
         songID = inputID;
+    }
+}
+
+-(void)setDictionaryData:(NSDictionary *)inputDict
+{
+    if(analysisData != inputDict)
+    {
+        analysisData = inputDict;
     }
 }
 
@@ -55,9 +64,17 @@
     [HUD setMode:MBProgressHUDModeIndeterminate];
     [HUD setLabelText:@"Please Wait"];
     [HUD show:YES];
+    if(trackWasIdentified)
+    {
+        //Run a similar connection on the identified track ID
+        connection = [[EchonestSimilarConnection alloc] initWithRequest:nil delegate:self trackID:songID danceability:danceability variety:variety numberOfTracks:numberOfTracks];
+        [connection start];
+    }else{
+        //Run a connection based on the musical data collection
+        connection = [[AnalysedPlaylistConnection alloc] initWithDanceability:[analysisData valueForKey:@"Danceability"] energy:[analysisData valueForKey:@"Energy"] tempo:[analysisData valueForKey:@"Tempo"] key:[analysisData valueForKey:@"Key"] mode:[analysisData valueForKey:@"Mode"] results:[NSString stringWithFormat:@"%i",numberOfTracks] delegate:self];
+        [connection start];
+    }
     
-    connection = [[EchonestSimilarConnection alloc] initWithRequest:nil delegate:self trackID:songID danceability:danceability variety:variety numberOfTracks:numberOfTracks];
-    [connection start];
 }
 
 #pragma mark - URL Connection Delegate
@@ -83,7 +100,12 @@
 
 - (void)viewDidLoad
 {
-    numberOfTracks = 15;
+    //If the track wasn't identified, get rid of the settings. 
+    if(!trackWasIdentified)
+    {
+        [slidersView setAlpha:0];
+    }
+    numberOfTracks = 10;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

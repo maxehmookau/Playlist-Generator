@@ -11,7 +11,7 @@
 
 const char* codegen_wrapper(const float*pcm, int numSamples) {
 	//Codegen*c = new Codegen(pcm, (uint)numSamples, 0, false);
-	Codegen*c = new Codegen(pcm, (unsigned int)numSamples, 0);
+	Codegen*c = new Codegen(pcm, (unsigned int)numSamples, 10);
 	string s = c->getCodeString();
 	return s.c_str();
 }

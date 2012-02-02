@@ -150,6 +150,20 @@ extern const char * GetPCMFromFile(char * filename);
     EchonestPlaylistParameterViewController *nextVC = [[EchonestPlaylistParameterViewController alloc] init];
     [nextVC setTrackID:trackID];
     [nextVC setTitle:@"Generate Playlist"];
+    if([trackID isEqualToString:@"No-Match"])
+    {
+        nextVC.trackWasIdentified = NO;
+        NSMutableDictionary *analyseDict = [[NSMutableDictionary alloc] init];
+        [analyseDict setValue:tempo forKey:@"Tempo"];
+        [analyseDict setValue:danceability forKey:@"Danceability"];
+        [analyseDict setValue:key forKey:@"Key"];
+        [analyseDict setValue:mode forKey:@"Mode"];
+        [analyseDict setValue:energy forKey:@"Energy"];
+        [analyseDict setValue:timeSignature forKey:@"Time"];
+        [nextVC setDictionaryData:analyseDict];
+    }else{
+        nextVC.trackWasIdentified = YES;
+    }
     [self.navigationController pushViewController:nextVC animated:YES];
 }
 

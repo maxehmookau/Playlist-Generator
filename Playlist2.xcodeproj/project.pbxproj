@@ -30,6 +30,7 @@
 		50573FA6149A86510053B6C7 /* SpotifyURILookup.m in Sources */ = {isa = PBXBuildFile; fileRef = 50573FA5149A86510053B6C7 /* SpotifyURILookup.m */; };
 		50573FAC149A8D430053B6C7 /* DisplayPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50573FAA149A8D430053B6C7 /* DisplayPlaylistViewController.m */; };
 		50573FAD149A8D430053B6C7 /* DisplayPlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50573FAB149A8D430053B6C7 /* DisplayPlaylistViewController.xib */; };
+		5067036C14D9D96D000D792E /* AnalysedPlaylistConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5067036B14D9D96D000D792E /* AnalysedPlaylistConnection.m */; };
 		507C4C5E149E797E00A7EEE7 /* URIToURLConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C4C5D149E797E00A7EEE7 /* URIToURLConverter.m */; };
 		507E530F14939DD50066DF21 /* EchonestPlaylistParameterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 507E530D14939DD50066DF21 /* EchonestPlaylistParameterViewController.m */; };
 		507E531014939DD50066DF21 /* EchonestPlaylistParameterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507E530E14939DD50066DF21 /* EchonestPlaylistParameterViewController.xib */; };
@@ -127,6 +128,8 @@
 		50573FA9149A8D430053B6C7 /* DisplayPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayPlaylistViewController.h; sourceTree = "<group>"; };
 		50573FAA149A8D430053B6C7 /* DisplayPlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayPlaylistViewController.m; sourceTree = "<group>"; };
 		50573FAB149A8D430053B6C7 /* DisplayPlaylistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DisplayPlaylistViewController.xib; sourceTree = "<group>"; };
+		5067036A14D9D96D000D792E /* AnalysedPlaylistConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysedPlaylistConnection.h; sourceTree = "<group>"; };
+		5067036B14D9D96D000D792E /* AnalysedPlaylistConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalysedPlaylistConnection.m; sourceTree = "<group>"; };
 		507C4C5C149E797E00A7EEE7 /* URIToURLConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URIToURLConverter.h; sourceTree = "<group>"; };
 		507C4C5D149E797E00A7EEE7 /* URIToURLConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URIToURLConverter.m; sourceTree = "<group>"; };
 		507E530C14939DD50066DF21 /* EchonestPlaylistParameterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchonestPlaylistParameterViewController.h; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 				50E853D51494FF1F00C18F54 /* EchonestSimilarConnection.m */,
 				5056EBA3149BC68900335C9C /* ReadPlaylistSuggestions.h */,
 				5056EBA4149BC68900335C9C /* ReadPlaylistSuggestions.m */,
+				5067036A14D9D96D000D792E /* AnalysedPlaylistConnection.h */,
+				5067036B14D9D96D000D792E /* AnalysedPlaylistConnection.m */,
 			);
 			name = "Find Similar";
 			sourceTree = "<group>";
@@ -625,6 +630,7 @@
 				50DB0CDA14CA0E4100659BB2 /* SPPlaybackManager.m in Sources */,
 				504C856914D7181100612036 /* AddToPlaylistViewController.m in Sources */,
 				503C99AF14D826680086AB91 /* EchonestAnalyseConnection.mm in Sources */,
+				5067036C14D9D96D000D792E /* AnalysedPlaylistConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

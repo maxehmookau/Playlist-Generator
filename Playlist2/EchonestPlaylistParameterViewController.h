@@ -12,8 +12,12 @@
 
 @interface EchonestPlaylistParameterViewController : UIViewController <NSURLConnectionDataDelegate>
 {
+    //Session Info
+    BOOL trackWasIdentified;
+    
     //Song Info
-    NSString *songID;
+    NSString *songID; //ID of a song if it was recognised
+    NSDictionary *analysisData; //Dictionary containing data about an analysis
     
     //UI Elemtents
     IBOutlet UIButton *tracksButton;
@@ -21,6 +25,7 @@
     IBOutlet UISlider *danceSlider;
     IBOutlet UISlider *moodSlider;
     IBOutlet UISlider *varietySlider;
+    IBOutlet UIView *slidersView;
     MBProgressHUD *HUD;
      
     //Values for sending to echonest
@@ -33,13 +38,14 @@
     BOOL feelingLucky;
     
     //Connection
-    EchonestSimilarConnection *connection;
+    NSURLConnection *connection;
     NSMutableData *receivedData;
     NSString *jsonData;
 }
 
 //Initialisation
 -(void)setTrackID:(NSString *)inputID;
+-(void)setDictionaryData:(NSDictionary *)inputDict;
 
 //Value changes
 -(IBAction)tracksStepperValueChange:(id)sender;
@@ -48,4 +54,6 @@
 
 //When generate playlist button is pressed
 -(IBAction)buttonPressed:(id)sender;
+
+@property (nonatomic) BOOL trackWasIdentified;
 @end

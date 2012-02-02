@@ -93,9 +93,9 @@
     NSString *receivedString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
     //NSLog(@"%@", receivedString);
     //Check if rate limiting kicked in... if it did, we have to wait 10 seconds. 
-    if([receivedString isEqualToString:@"You hit the rate limit, wait 10 seconds and try again"])
+    if([receivedString isEqual:nil])
     {
-        sleep(10);
+        sleep(2);
     //If not, check if results were available and add it to the array
     }else if([self resultsExistForJSON:receivedString])
     {
