@@ -58,6 +58,13 @@
         [cell setAccessoryType:UITableViewCellAccessoryNone];
         [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
+    if([URLs count] > 0){
+        if([[URLs objectAtIndex:indexPath.row]isEqualToString:@""]){
+            [cell setAccessoryType: UITableViewCellAccessoryNone];
+        }else{
+            [cell setAccessoryType: UITableViewCellAccessoryCheckmark];
+        }
+    }
     [cells addObject:cell];
     return cell;
 }
@@ -65,7 +72,22 @@
 #pragma mark - Connection Delegate
 -(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    [receivedData setLength:0];
+    NSHTTPURLResponse* httpResponse = (NSHTTPURLResponse*)response;
+    int code = [httpResponse statusCode];
+    
+    if(code == 400 || code == 403 || code == 404 || code == 406 || code == 500 || code == 503)
+    {
+        //Shit's gone doooown. Move on to the next track now!
+        NSLog(@"%i", code);
+    }else if(code == 200){
+        //Everything's hunky dorky.
+        [receivedData setLength:0];
+    }else{
+        //Unknown error.
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"The Spotify metadata API returned an unknown error. There's not much we can do... try again later"] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    }
+    
 }
 
 -(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -101,11 +123,14 @@
     {
         ExtractSpotifyURI *extractor = [[ExtractSpotifyURI alloc] initWithSpotifyJSONString:receivedString];
         [URLs addObject:[extractor getURI]];
+        [table reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:currentConnectionNumber inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     }
     
     //Chill out for 2 seconds, to stop rate limiting kicking in. (This is annoying.)
-    sleep(2);
+    //sleep(1);
     //When done, increase the connection number, and run the next connection.
+    
+    
     currentConnectionNumber++;
     if(currentConnectionNumber < [connections count])
     {
@@ -151,17 +176,18 @@
 
 - (void)viewDidLoad
 {
+    //[table becomeFirstResponder];
     hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.view addSubview:hud];
+    //[self.view addSubview:hud];
     [hud setMode:MBProgressHUDModeIndeterminate];
     [hud setLabelText:@"Loading"];
     [hud setDetailsLabelText:@"This might take a minute..."];
-    [hud show:YES];
+    //[hud show:YES];
     receivedData = [[NSMutableData alloc] init];
     currentConnectionNumber = 0;
     URLs = [[NSMutableArray alloc] initWithCapacity:[artistList count]];
     //Create lots of activity indicators so that they are held within the VC
-    activityIndicators = [[NSMutableArray alloc] initWithCapacity:[artistList count]];
+    activityIndicators = [[NSMutableArray alloc] init];
     for(int x = 0; x < [artistList count]; x++)
     {
         UIActivityIndicatorView *currentAI = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];

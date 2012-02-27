@@ -108,6 +108,9 @@
         [artistLabel setText:artistName];
         [trackLabel setText:[track name]];
         
+        nowPlayingInfo = [[NSMutableDictionary alloc] init];
+        [nowPlayingInfo setValue:artistName forKey:MPMediaItemPropertyAlbumArtist];
+        [nowPlayingInfo setValue:[track name] forKey:MPMediaItemPropertyTitle];
         
         [self getCoverImageForTrack:track];
         
@@ -120,6 +123,8 @@
                                                   otherButtonTitles:nil];
             [alert show];
         }
+        
+        
         [hud hide:YES afterDelay:1];
         currentTrackPlayingIndex = [index intValue];
         currentTrackDuration = [track duration];
@@ -192,6 +197,8 @@
     }
     
     UIImage *coverImage = [coverSPImage image];
+    [nowPlayingInfo setValue:[[MPMediaItemArtwork alloc]initWithImage:coverImage] forKey:MPMediaItemPropertyArtwork];
+    [nowPlaying setNowPlayingInfo:nowPlayingInfo];
     [coverImageView setImage:coverImage];
 }
 
@@ -211,23 +218,72 @@
     }
 }
 
+-(void) initAudioSession 
+{
+    // Registers this class as the delegate of the audio session to listen for audio interruptions
+    [[AVAudioSession sharedInstance] setDelegate: self];
+    //Set the audio category of this app to playback.
+    NSError *setCategoryError = nil; [[AVAudioSession sharedInstance]
+                                      setCategory: AVAudioSessionCategoryPlayback error: &setCategoryError];
+
+    
+    //Activate the audio session
+    NSError *activationError = nil;
+    [[AVAudioSession sharedInstance] setActive: YES error: &activationError];
+
+}
+
+- (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
+    if (receivedEvent.type == UIEventTypeRemoteControl) {
+        switch (receivedEvent.subtype) {
+            case UIEventSubtypeRemoteControlTogglePlayPause: {
+                [self togglePlayPause:self];
+                break;
+            }
+                
+            case UIEventSubtypeRemoteControlNextTrack: {
+                [self nextTrack:self];
+                break;
+            }
+                
+            case UIEventSubtypeRemoteControlPreviousTrack: {
+                [self previousTrack:self];
+                break;
+            }
+            default:
+                break;
+        }
+    }
+}
+
 #pragma mark - View lifecycle
 -(void)viewDidAppear:(BOOL)animated
 {
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
     hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:hud];
-    [self loginToSpotifyWithUsername:@"maxehmookau" andPassword:@"fupk5ek2"];
+    [self loginToSpotifyWithUsername:@"maxehmookau" andPassword:@"edithdora6"];
 }
 
 - (void)viewDidLoad
 {
+    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
+    nowPlaying = [MPNowPlayingInfoCenter defaultCenter];
+              
+    [self initAudioSession];
     currentTrackPlayingIndex = 0;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+- (BOOL) canBecomeFirstResponder {
+    return YES;
+}
 
 - (void)viewDidUnload
 {
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [self resignFirstResponder];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

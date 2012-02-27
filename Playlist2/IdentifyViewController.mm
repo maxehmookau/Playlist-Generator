@@ -33,10 +33,15 @@
     [recordButton setEnabled:NO];
     
     //Begin Recording - Don't need any parameters, this is all done for us.
-    inputRecorder = [[InputRecorder alloc] initWithURL:nil settings:nil error:nil];
+    NSError *error = nil;
+    inputRecorder = [[InputRecorder alloc] initWithURL:nil settings:nil error:&error];
     [inputRecorder setDelegate:self];
     [inputRecorder setMeteringEnabled:YES];
     [inputRecorder record];
+    if(error)
+    {
+        NSLog([error localizedDescription]);
+    }
     
 }
 

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		501542DA14C9B520001B842E /* SpotifyPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 501542D814C9B520001B842E /* SpotifyPlayer.m */; };
 		501542DB14C9B520001B842E /* SpotifyPlayer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 501542D914C9B520001B842E /* SpotifyPlayer.xib */; };
+		50171B6E14E00EF8005FD274 /* Genres.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50171B6D14E00EF8005FD274 /* Genres.plist */; };
 		501C24E814D89BDE00B3BB49 /* nextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 501C24E714D89BDE00B3BB49 /* nextButton.png */; };
-		5022F1AB14C9E593007B864B /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5022F1A914C9E57A007B864B /* libCocoaLibSpotify.a */; };
 		5022F1B514C9E75F007B864B /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5022F1B414C9E75F007B864B /* libstdc++.dylib */; };
 		5022F1B714C9E76B007B864B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5022F1B614C9E76B007B864B /* CFNetwork.framework */; };
 		503755D0147FF873001870C9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 503755CF147FF873001870C9 /* AVFoundation.framework */; };
@@ -22,6 +22,7 @@
 		503755EC14801E6E001870C9 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 503755E914801E6E001870C9 /* orange.png */; };
 		503755ED14801E6E001870C9 /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = 503755EA14801E6E001870C9 /* red.png */; };
 		503C99AF14D826680086AB91 /* EchonestAnalyseConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 503C99AE14D826680086AB91 /* EchonestAnalyseConnection.mm */; };
+		5043275614FBDD62000ABD68 /* libCocoaLibSpotify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5043275414FBDD06000ABD68 /* libCocoaLibSpotify.a */; };
 		504C856214D6F87800612036 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 504C855E14D6F87800612036 /* play.png */; };
 		504C856414D6F87800612036 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 504C856014D6F87800612036 /* pause.png */; };
 		504C856914D7181100612036 /* AddToPlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 504C856714D7181100612036 /* AddToPlaylistViewController.m */; };
@@ -77,18 +78,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5022F1A814C9E57A007B864B /* PBXContainerItemProxy */ = {
+		5043275314FBDD06000ABD68 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 5022F1A114C9E579007B864B /* CocoaLibSpotify iOS Library.xcodeproj */;
+			containerPortal = 5043274C14FBDD06000ABD68 /* CocoaLibSpotify iOS Library.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 50AF49DC1439CBFE00E4A5EF;
-			remoteInfo = CocoaLibSpotify;
-		};
-		50DB0CE914CA0FB100659BB2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5022F1A114C9E579007B864B /* CocoaLibSpotify iOS Library.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 50AF49DB1439CBFE00E4A5EF;
 			remoteInfo = CocoaLibSpotify;
 		};
 /* End PBXContainerItemProxy section */
@@ -97,8 +91,8 @@
 		501542D714C9B520001B842E /* SpotifyPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpotifyPlayer.h; sourceTree = "<group>"; };
 		501542D814C9B520001B842E /* SpotifyPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpotifyPlayer.m; sourceTree = "<group>"; };
 		501542D914C9B520001B842E /* SpotifyPlayer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpotifyPlayer.xib; sourceTree = "<group>"; };
+		50171B6D14E00EF8005FD274 /* Genres.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Genres.plist; sourceTree = "<group>"; };
 		501C24E714D89BDE00B3BB49 /* nextButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextButton.png; sourceTree = "<group>"; };
-		5022F1A114C9E579007B864B /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "../../../../Downloads/spotify-cocoalibspotify-2e5a286/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
 		5022F1B314C9E66D007B864B /* appkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appkey.h; sourceTree = "<group>"; };
 		5022F1B414C9E75F007B864B /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		5022F1B614C9E76B007B864B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -116,6 +110,7 @@
 		503755EA14801E6E001870C9 /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = red.png; path = ../../../../Desktop/red.png; sourceTree = "<group>"; };
 		503C99AD14D826670086AB91 /* EchonestAnalyseConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchonestAnalyseConnection.h; sourceTree = "<group>"; };
 		503C99AE14D826680086AB91 /* EchonestAnalyseConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EchonestAnalyseConnection.mm; sourceTree = "<group>"; };
+		5043274C14FBDD06000ABD68 /* CocoaLibSpotify iOS Library.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CocoaLibSpotify iOS Library.xcodeproj"; path = "../../../../Downloads/spotify-cocoalibspotify-f967e54 2/iOS Library/CocoaLibSpotify iOS Library.xcodeproj"; sourceTree = "<group>"; };
 		504C855E14D6F87800612036 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		504C856014D6F87800612036 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		504C856614D7181100612036 /* AddToPlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddToPlaylistViewController.h; sourceTree = "<group>"; };
@@ -212,8 +207,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5043275614FBDD62000ABD68 /* libCocoaLibSpotify.a in Frameworks */,
 				5094D11C1481043900EFF0CD /* CoreAudio.framework in Frameworks */,
-				5022F1AB14C9E593007B864B /* libCocoaLibSpotify.a in Frameworks */,
 				5022F1B714C9E76B007B864B /* CFNetwork.framework in Frameworks */,
 				5022F1B514C9E75F007B864B /* libstdc++.dylib in Frameworks */,
 				5094D122148105C000EFF0CD /* libz.dylib in Frameworks */,
@@ -256,14 +251,6 @@
 				50E9F77E14CD888E0098F2F5 /* border.png */,
 			);
 			name = "Player Images";
-			sourceTree = "<group>";
-		};
-		5022F1A214C9E579007B864B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5022F1A914C9E57A007B864B /* libCocoaLibSpotify.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		503755D8147FFA1F001870C9 /* App Delegate */ = {
@@ -321,6 +308,14 @@
 			name = "Record Meter";
 			sourceTree = "<group>";
 		};
+		5043274D14FBDD06000ABD68 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5043275414FBDD06000ABD68 /* libCocoaLibSpotify.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5049BA26148F70AC0037637C /* Find Similar */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +328,7 @@
 				5056EBA4149BC68900335C9C /* ReadPlaylistSuggestions.m */,
 				5067036A14D9D96D000D792E /* AnalysedPlaylistConnection.h */,
 				5067036B14D9D96D000D792E /* AnalysedPlaylistConnection.m */,
+				50171B6D14E00EF8005FD274 /* Genres.plist */,
 			);
 			name = "Find Similar";
 			sourceTree = "<group>";
@@ -405,8 +401,8 @@
 		50A1E5B2147FE4AF005F5340 = {
 			isa = PBXGroup;
 			children = (
+				5043274C14FBDD06000ABD68 /* CocoaLibSpotify iOS Library.xcodeproj */,
 				5022F1B314C9E66D007B864B /* appkey.h */,
-				5022F1A114C9E579007B864B /* CocoaLibSpotify iOS Library.xcodeproj */,
 				5094D148148108F500EFF0CD /* JSON */,
 				5094D1181481009400EFF0CD /* Echoprint Library */,
 				503755E314800C37001870C9 /* Heads-Up Display */,
@@ -514,7 +510,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				50DB0CEA14CA0FB100659BB2 /* PBXTargetDependency */,
 			);
 			name = Playlist2;
 			productName = Playlist2;
@@ -541,8 +536,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 5022F1A214C9E579007B864B /* Products */;
-					ProjectRef = 5022F1A114C9E579007B864B /* CocoaLibSpotify iOS Library.xcodeproj */;
+					ProductGroup = 5043274D14FBDD06000ABD68 /* Products */;
+					ProjectRef = 5043274C14FBDD06000ABD68 /* CocoaLibSpotify iOS Library.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -553,11 +548,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		5022F1A914C9E57A007B864B /* libCocoaLibSpotify.a */ = {
+		5043275414FBDD06000ABD68 /* libCocoaLibSpotify.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libCocoaLibSpotify.a;
-			remoteRef = 5022F1A814C9E57A007B864B /* PBXContainerItemProxy */;
+			remoteRef = 5043275314FBDD06000ABD68 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -585,6 +580,7 @@
 				504C856414D6F87800612036 /* pause.png in Resources */,
 				504C856A14D7181100612036 /* AddToPlaylistViewController.xib in Resources */,
 				501C24E814D89BDE00B3BB49 /* nextButton.png in Resources */,
+				50171B6E14E00EF8005FD274 /* Genres.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,14 +631,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		50DB0CEA14CA0FB100659BB2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CocoaLibSpotify;
-			targetProxy = 50DB0CE914CA0FB100659BB2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		50A1E5CA147FE4AF005F5340 /* InfoPlist.strings */ = {

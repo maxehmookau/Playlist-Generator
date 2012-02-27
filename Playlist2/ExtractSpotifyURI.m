@@ -25,6 +25,13 @@
     NSDictionary *trackOne = [tracks objectAtIndex:0];
     NSString *URI = [trackOne objectForKey:@"href"];
     NSLog(@"%@", URI);
-    return URI;
+    if(URI != nil)
+    {
+        return URI;
+    }else{
+        //Failed? Give them some nyan cat!
+        return @"spotify:track:5CXfVcqBAtCAHhnGmoxBZ9";
+    }
+    
 }
 @end
