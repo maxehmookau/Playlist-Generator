@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['getanalysisdataof_3a',['getAnalysisDataOf:',['../interface_analyse_view_controller.html#aa4766dfaa9b37eff70966a9abb84ce64',1,'AnalyseViewController']]],
+  ['getartistlist',['getArtistList',['../interface_read_playlist_suggestions.html#a3a8fc3d6380ac40f54786374a2b21c04',1,'ReadPlaylistSuggestions']]],
+  ['getcodestring',['getCodeString',['../class_codegen.html#a61b1967232fa104429a47df185dfd84d',1,'Codegen']]],
+  ['getcoverimagefortrack_3a',['getCoverImageForTrack:',['../interface_spotify_player.html#ae55e659470209a5f4ac506c683ed9c56',1,'SpotifyPlayer']]],
+  ['getechoprintcode',['getEchoprintCode',['../interface_analyse_view_controller.html#ae7c7632232001119b238bbf41736f82f',1,'AnalyseViewController']]],
+  ['getfilepath',['getFilePath',['../interface_echonest_analyse_connection.html#a0d4cc738f53a0a27a638b78ada2e1af9',1,'EchonestAnalyseConnection::getFilePath()'],['../interface_input_recorder.html#a32076a5a17c3c3e795597372b3841c99',1,'InputRecorder::getFilePath()']]],
+  ['getnextunichar_3a',['getNextUnichar:',['../interface_s_b_json_u_t_f8_stream.html#a0a813e17d9a1e2638a8d5a58a524b055',1,'SBJsonUTF8Stream']]],
+  ['getnumcodes',['getNumCodes',['../class_codegen.html#a5fbdaf3f8a046195b0d1d4f7772a5ccf',1,'Codegen']]],
+  ['getpcmfromfile',['GetPCMFromFile',['../_get_p_c_m_from_file_8mm.html#a414cc77cf50c2d3f338546443a912087',1,'GetPCMFromFile.mm']]],
+  ['getrequest',['getRequest',['../interface_analysed_playlist_connection.html#abd0e613127bfed34451e40321f2b8260',1,'AnalysedPlaylistConnection::getRequest()'],['../interface_analysis_connection.html#a8ae09b819da35b30cf9cc138e9f087ac',1,'AnalysisConnection::getRequest()'],['../interface_echonest_analyse_connection.html#ade9bcf5cecf04f1947101423de5e396c',1,'EchonestAnalyseConnection::getRequest()'],['../interface_echonest_similar_connection.html#a7f3abdf0459963df2f8694ba1bf3bc2a',1,'EchonestSimilarConnection::getRequest()'],['../interface_song_profile_connection.html#a1451961970f8846129b3de3fca9d97a7',1,'SongProfileConnection::getRequest()']]],
+  ['getretainedstringfragment_3a',['getRetainedStringFragment:',['../interface_s_b_json_u_t_f8_stream.html#a221bf94fb45b3c2c73c6f04bb7d06b26',1,'SBJsonUTF8Stream']]],
+  ['getsettingsdictionary',['getSettingsDictionary',['../interface_input_recorder.html#aa63d30aff32027f482fb2bcc2be58eed',1,'InputRecorder']]],
+  ['getsimplename',['GetSimpleName',['../class_c_a_stream_basic_description.html#ac11add1f98f25726f872bbad925d87b4',1,'CAStreamBasicDescription']]],
+  ['getsongsarray',['getSongsArray',['../interface_read_playlist_suggestions.html#a49f5bea99111ae766efdc029b69b367a',1,'ReadPlaylistSuggestions']]],
+  ['getspotifyurirequest',['getSpotifyURIRequest',['../interface_spotify_u_r_i_lookup.html#a1ef2d53416b56c40452cab8e299f8673',1,'SpotifyURILookup']]],
+  ['gettoken_3a',['getToken:',['../interface_s_b_json_tokeniser.html#a9244d283305dcafc6ec9c4ccfed91e1a',1,'SBJsonTokeniser']]],
+  ['gettrackdata',['getTrackData',['../interface_analyse_view_controller.html#a9d6b1763a9415c130da2680ada7a2de7',1,'AnalyseViewController']]],
+  ['gettracklist',['getTrackList',['../interface_read_playlist_suggestions.html#ae7fc8a4cb6515b132c463c65388a9499',1,'ReadPlaylistSuggestions']]],
+  ['getunichar_3a',['getUnichar:',['../interface_s_b_json_u_t_f8_stream.html#a74153b4e039bcb2626a6162b8c9024c1',1,'SBJsonUTF8Stream']]],
+  ['geturi',['getURI',['../interface_extract_spotify_u_r_i.html#a0efb3959fc9896edfe8eab14505c7955',1,'ExtractSpotifyURI']]],
+  ['getversion',['getVersion',['../class_codegen.html#a86e5435e0ce509a185f410ef2ea97501',1,'Codegen']]],
+  ['gobuttonpressed_3a',['goButtonPressed:',['../interface_analyse_view_controller.html#a8df475b9035271aaad1ac6238a6e9c1c',1,'AnalyseViewController']]]
+];

@@ -110,6 +110,11 @@
     return YES;
 }
 
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"Connection Failed");
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSString *receivedString = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
@@ -117,13 +122,14 @@
     //Check if rate limiting kicked in... if it did, we have to wait 10 seconds. 
     if([receivedString isEqual:nil])
     {
+        NSLog(@"nil received");
         sleep(2);
     //If not, check if results were available and add it to the array
     }else if([self resultsExistForJSON:receivedString])
     {
         ExtractSpotifyURI *extractor = [[ExtractSpotifyURI alloc] initWithSpotifyJSONString:receivedString];
         [URLs addObject:[extractor getURI]];
-        [table reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:currentConnectionNumber inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        //[table reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:currentConnectionNumber inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     }
     
     //Chill out for 2 seconds, to stop rate limiting kicking in. (This is annoying.)
@@ -138,21 +144,27 @@
         SpotifyURILookup *nextConnection = [connections objectAtIndex:currentConnectionNumber];
         [nextConnection start];
     }else{
-        [hud hide:YES];
-        UIAlertView *spotifyLoginAlert = [[UIAlertView alloc] initWithTitle:@"Login to Spotify" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: @"Login", nil];
-        [spotifyLoginAlert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
-        [spotifyLoginAlert show];
+        if([[SPSession sharedSession]storedCredentialsUserName] == nil)
+        {
+            [hud hide:YES];
+            UIAlertView *spotifyLoginAlert = [[UIAlertView alloc] initWithTitle:@"Login to Spotify" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles: @"Login", nil];
+            [spotifyLoginAlert setAlertViewStyle:UIAlertViewStyleLoginAndPasswordInput];
+            [spotifyLoginAlert show];
+        }else{
+            SpotifyPlayer *player = [[SpotifyPlayer alloc] initWithUserName:nil password:nil];
+            [player setArray:URLs];
+            [self.navigationController pushViewController:player animated:YES];
+        }
+        
     }
 }
 
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    SpotifyPlayer *player = [[SpotifyPlayer alloc]init];
+    SpotifyPlayer *player = [[SpotifyPlayer alloc]initWithUserName:[alertView textFieldAtIndex:0].text password:[alertView textFieldAtIndex:1].text];
     [player setArray:URLs];
     [self.navigationController pushViewController:player animated:YES];
-    
-    //Login performed... get logging in to spotify!
 }
 
 
@@ -178,14 +190,14 @@
 {
     //[table becomeFirstResponder];
     hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    //[self.view addSubview:hud];
+    [self.view addSubview:hud];
     [hud setMode:MBProgressHUDModeIndeterminate];
     [hud setLabelText:@"Loading"];
     [hud setDetailsLabelText:@"This might take a minute..."];
-    //[hud show:YES];
+    [hud show:YES];
     receivedData = [[NSMutableData alloc] init];
     currentConnectionNumber = 0;
-    URLs = [[NSMutableArray alloc] initWithCapacity:[artistList count]];
+    URLs = [[NSMutableArray alloc] init];
     //Create lots of activity indicators so that they are held within the VC
     activityIndicators = [[NSMutableArray alloc] init];
     for(int x = 0; x < [artistList count]; x++)
@@ -193,7 +205,7 @@
         UIActivityIndicatorView *currentAI = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [activityIndicators addObject:currentAI];
     }
-    connections = [[NSMutableArray alloc] initWithCapacity:[artistList count]];
+    connections = [[NSMutableArray alloc] init];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

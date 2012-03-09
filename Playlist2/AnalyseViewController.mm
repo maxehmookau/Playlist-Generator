@@ -11,6 +11,7 @@
 #import "SBJson.h"
 #import "EchonestPlaylistParameterViewController.h"
 #import "EchonestAnalyseConnection.h"
+#import "IdentifyViewController.h"
 
 @implementation AnalyseViewController
 @synthesize recordingURL, artistField, trackField;
@@ -57,14 +58,10 @@ extern const char * GetPCMFromFile(char * filename);
     //Find out whether songs were matched
     if([songs count] == 0)
     {
-        [analyseView setAlpha:1];
-        [goButton setAlpha:1];
-        [goButton setTitle:@"Generate Playlist" forState:UIControlStateNormal];
-        [HUD setLabelText:@"Analysing"];
-        [HUD setDetailsLabelText:@"This might take a while..."];
-        trackID = @"No-Match";
-        echonestUpload = [[EchonestAnalyseConnection alloc] initWithFileURL:recordingURL.absoluteString delegate:self];
-        [echonestUpload start];
+        UIAlertView *noMatchAlert = [[UIAlertView alloc] initWithTitle:@"No Match" message:@"No match was found, what do you want to do? Analysing music can be very slow!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Try Again", @"Analyse Music", nil];
+        [noMatchAlert show];
+        //IMPLEMENT DELEGATE VIEW!!
+
     }else{
         [goButton setAlpha:1];
         [goButton setTitle:@"Choose Options" forState:UIControlStateNormal];
@@ -80,6 +77,26 @@ extern const char * GetPCMFromFile(char * filename);
         [HUD hide:YES afterDelay:1];
     }
     
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+    {
+        [HUD hide:YES];
+        IdentifyViewController *nextController = [[IdentifyViewController alloc] init];
+        [self.navigationController pushViewController:nextController animated:YES];
+    }else{
+        [HUD hide:YES];
+        [analyseView setAlpha:1];
+        [goButton setAlpha:1];
+        [goButton setTitle:@"Generate Playlist" forState:UIControlStateNormal];
+        [HUD setLabelText:@"Analysing"];
+        [HUD setDetailsLabelText:@"This might take a while..."];
+        trackID = @"No-Match";
+        echonestUpload = [[EchonestAnalyseConnection alloc] initWithFileURL:recordingURL.absoluteString delegate:self];
+        [echonestUpload start];
+    }
 }
 
 -(void)getAnalysisDataOf:(NSString *)data
@@ -183,7 +200,22 @@ extern const char * GetPCMFromFile(char * filename);
         [self getTrackID];
     }else if(connection == songProfileConnection)
     {
+        //Get track data
         [self getTrackData];
+        
+        //Add the track to the persistent store
+        appDelegate = (playlist2AppDelegate *)[[UIApplication sharedApplication] delegate];
+        context = appDelegate.managedObjectContext;
+        NSManagedObject *newTrack = [[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"Track"inManagedObjectContext:context] insertIntoManagedObjectContext:context];
+        
+        [newTrack setValue:trackArtist forKey:@"artist"];
+        [newTrack setValue:trackTitle forKey:@"title"];
+        [newTrack setValue:trackID forKey:@"id"];
+        
+        NSError *error;
+        if (![context save:&error]) {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
     }else if(connection == echonestUpload)
     {
         [HUD hide:YES afterDelay:1];

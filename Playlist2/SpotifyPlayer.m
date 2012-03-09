@@ -10,24 +10,22 @@
 #import "CocoaLibSpotify.h"
 #import "appkey.h"
 #import "AddToPlaylistViewController.h"
+#import "playlist2AppDelegate.h"
+#import "DisplayPlayerPlaylistViewController.h"
 
 @implementation SpotifyPlayer
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(id)initWithUserName:(NSString *)aUsername password:(NSString *)aPassword
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    spotifyUsername = aUsername;
+    spotifyPassword = aPassword;
+    return [self init];
 }
 
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 -(void)setArray:(NSArray *)theArray
@@ -40,13 +38,26 @@
 
 -(void)loginToSpotifyWithUsername:(NSString *)username andPassword:(NSString *)password
 {
+    NSError* error  = nil;
     [hud setMode:MBProgressHUDModeIndeterminate];
     [hud setLabelText:@"Logging in to Spotify..."];
     [hud show:YES];
-    [SPSession initializeSharedSessionWithApplicationKey:[NSData dataWithBytes:&g_appkey length:g_appkey_size] userAgent:@"max.playlist2" error:nil];
-    [[SPSession sharedSession]attemptLoginWithUserName:username password:password rememberCredentials:NO];
+    [SPSession initializeSharedSessionWithApplicationKey:[NSData dataWithBytes:&g_appkey length:g_appkey_size] userAgent:@"com.maxwoolf.ionia" error:&error];
+    
+    if(username == nil && password == nil)
+    {
+        [[SPSession sharedSession]attemptLoginWithStoredCredentials:&error];
+    }else{
+        [[SPSession sharedSession]attemptLoginWithUserName:username password:password rememberCredentials:YES];
+    }
+    
     [[SPSession sharedSession] setDelegate:self];
     [[SPSession sharedSession] setPlaybackDelegate:self];
+    if(error)
+    {
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [errorAlert show];
+    }
 }
 
 #pragma mark - Spotify Delegate
@@ -55,6 +66,13 @@
     UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Failed to Login" message:[error localizedDescription] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
     [hud hide:YES];
     [errorAlert show];
+}
+
+-(void)sessionDidLogOut:(SPSession *)aSession
+{
+    [hud hide:YES];
+    [self displayCurrentSpotifyStatusForSession:aSession];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)sessionDidLoginSuccessfully:(SPSession *)aSession
@@ -263,18 +281,73 @@
     [self becomeFirstResponder];
     hud = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:hud];
-    [self loginToSpotifyWithUsername:@"maxehmookau" andPassword:@"edithdora6"];
+    [self loginToSpotifyWithUsername:spotifyUsername andPassword:spotifyPassword];
+}
+
+-(void) displayCurrentSpotifyStatusForSession:(SPSession *)aSession
+{
+    sp_connectionstate state = [[SPSession sharedSession]connectionState];
+    
+    switch (state) {
+        case SP_CONNECTION_STATE_DISCONNECTED:
+            NSLog(@"Connection was connected, now disconnected.");
+            break;
+            
+        case SP_CONNECTION_STATE_LOGGED_IN:
+            NSLog(@"Currently Logged In");
+            break;
+            
+        case SP_CONNECTION_STATE_LOGGED_OUT:
+            NSLog(@"User Not Logged In");
+            break;
+            
+        case SP_CONNECTION_STATE_OFFLINE:
+            NSLog(@"Logged in - Offline Mode");
+            break;
+            
+        case SP_CONNECTION_STATE_UNDEFINED:
+            NSLog(@"Undefined Error");
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void)goHome
+{
+    [hud setLabelText:@"Logging Out"];
+    [hud show:YES];
+    
+    manager.isPlaying = NO;
+    [[SPSession sharedSession]logout];
+}
+-(void)showPlaylist
+{
+    DisplayPlayerPlaylistViewController *playlistVC = [[DisplayPlayerPlaylistViewController alloc] initWithTracks:trackURIs];
+    [playlistVC setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentModalViewController:playlistVC animated:YES];
 }
 
 - (void)viewDidLoad
 {
-    [[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
+    UIBarButtonItem *homeButton = [[UIBarButtonItem alloc] initWithTitle:@"Home" style:UIBarButtonItemStyleBordered target:self action:@selector(goHome)];
+                             
+                             self.navigationItem.hidesBackButton = YES;
+                             self.navigationItem.leftBarButtonItem = homeButton;
+    
+    UIBarButtonItem *playlistButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showPlaylist)];
+    self.navigationItem.rightBarButtonItem = playlistButton;
+    //[bottomToolbar setFrame:CGRectMake(0, 375, 320, 85)];
+    //[self.navigationController setNavigationBarHidden:YES];
+    //[[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];
     nowPlaying = [MPNowPlayingInfoCenter defaultCenter];
               
     [self initAudioSession];
     currentTrackPlayingIndex = 0;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
 }
 - (BOOL) canBecomeFirstResponder {
     return YES;

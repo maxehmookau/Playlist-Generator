@@ -8,8 +8,12 @@
 
 #import "IdentifyViewController.h"
 #import "AnalyseViewController.h"
+#import "HistoryViewController.h"
+#import "AboutViewController.h"
+#import "Reachability.h"
 
 @implementation IdentifyViewController
+@synthesize startImmediatedly;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -21,9 +25,17 @@
 }
 
 
+
+
 #pragma mark - Pressing record button
 -(IBAction)recordButtonPressed:(id)sender
 {
+    for(int x = 0; x < [toggledElements count]; x++)
+    {
+        [[toggledElements objectAtIndex:x] removeFromSuperview];
+    }
+    [historyButton setEnabled:NO];
+    
     //Begin counter
     progressTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
     powerTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
@@ -114,6 +126,22 @@
     }
 }
 
+-(void)loadHistory:(id)sender
+{
+    for(int x = 0; x < [toggledElements count]; x++)
+    {
+        [[toggledElements objectAtIndex:x] removeFromSuperview];
+    }
+    HistoryViewController *historyVC = [[HistoryViewController alloc] customInit];
+    [self.navigationController pushViewController:historyVC animated:YES];
+}
+
+-(void)showAcknowledgements
+{
+    AboutViewController *aboutVC = [[AboutViewController alloc] init];
+    [self presentModalViewController:aboutVC animated:YES];
+}
+
 #pragma mark - Built in methods
 
 - (void)didReceiveMemoryWarning
@@ -128,10 +156,23 @@
 
 - (void)viewDidLoad
 {
+    [historyButton setEnabled:YES];
+    [self setTitle:@"Welcome to ionia"];
+    [historyButton.titleLabel setTextAlignment:UITextAlignmentCenter];
+    [recordButton.titleLabel setTextAlignment:UITextAlignmentCenter];
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:0.416 green:0.980 blue:0.510 alpha:1.000]];
     meterObjects = [[NSArray alloc] initWithObjects:meter0, meter1, meter2, meter3, meter4, nil];
+    
+    toggledElements = [[NSArray alloc] initWithObjects:identifyInstruction, historyInstruction, arrow1, arrow2, nil];
+
+    UIBarButtonItem *aboutButton = [[UIBarButtonItem alloc] initWithTitle:@"About" style:UIBarButtonItemStylePlain target:self action:@selector(showAcknowledgements)];          
+    self.navigationItem.rightBarButtonItem = aboutButton;
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+
 
 - (void)viewDidUnload
 {
@@ -142,6 +183,17 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    Reachability *reach = [Reachability reachabilityForInternetConnection];
+    if(![reach isReachable])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No internet connection!" message:@"There's no internet connection. Please connect to Wifi or 3G!" delegate:nil cancelButtonTitle:@"Alright" otherButtonTitles:nil];
+        [alert show];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

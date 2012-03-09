@@ -90,16 +90,24 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)d {
-    ReadPlaylistSuggestions *jsonReader = [[ReadPlaylistSuggestions alloc] initWithJsonData:d];
-    DisplayPlaylistViewController *playlistVC = [[DisplayPlaylistViewController alloc] initWithArtistArray:[jsonReader getArtistList] tracksArray:[jsonReader getTrackList]];
-    [self.navigationController pushViewController:playlistVC animated:YES];
+    [receivedData appendData:d];
+}
+
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    ReadPlaylistSuggestions *jsonReader = [[ReadPlaylistSuggestions alloc] initWithJsonData:receivedData];
+    nextVC = [[DisplayPlaylistViewController alloc] initWithArtistArray:[jsonReader getArtistList] tracksArray:[jsonReader getTrackList]];
+    [self.navigationController pushViewController:nextVC animated:YES];
     [HUD removeFromSuperview];
+    
 }
 
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
+    [self setTitle:@"Options"];
+    receivedData = [[NSMutableData alloc] init];
     //If the track wasn't identified, get rid of the settings. 
     if(!trackWasIdentified)
     {

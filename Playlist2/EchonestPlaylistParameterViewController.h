@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "EchonestSimilarConnection.h"
 #import "MBProgressHUD.h"
+#import "DisplayPlaylistViewController.h"
 
 @interface EchonestPlaylistParameterViewController : UIViewController <NSURLConnectionDataDelegate>
 {
@@ -41,6 +42,8 @@
     NSURLConnection *connection;
     NSMutableData *receivedData;
     NSString *jsonData;
+    DisplayPlaylistViewController *nextVC;
+    NSMutableData *inputData;
 }
 
 //Initialisation

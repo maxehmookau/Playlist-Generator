@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
+#import "playlist2AppDelegate.h"
 
 @interface DisplayPlaylistViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, NSURLConnectionDataDelegate, UIAlertViewDelegate>
 {
