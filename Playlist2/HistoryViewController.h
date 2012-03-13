@@ -18,6 +18,8 @@
      * @discussion This is automatically filled when viewDidLoad: is called.
      */
     NSMutableArray *playlists;
+    
+    IBOutlet UITableView *table;
 }
 
 /*!
@@ -25,5 +27,7 @@
  * @discussion Use this method to initialised the view controller rather than init.
  */
 -(id)customInit;
+
+-(void)clearAll;
 
 @end

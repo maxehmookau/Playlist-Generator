@@ -185,9 +185,5 @@
  */
 -(void)goHome;
 
-/**
- * @function
- * @brief Shows playlist
- */
--(void)showPlaylist;
+
 @end

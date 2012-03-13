@@ -75,6 +75,28 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+-(void)clearAll
+{
+    NSFetchRequest * allTracks = [[NSFetchRequest alloc] init];
+    [allTracks setEntity:[NSEntityDescription entityForName:@"Track" inManagedObjectContext:context]];
+    [allTracks setIncludesPropertyValues:NO]; //only fetch the managedObjectID
+    
+    NSError * error = nil;
+    NSArray * tracks = [context executeFetchRequest:allTracks error:&error];
+    for (NSManagedObject * track in tracks) {
+        [context deleteObject:track];
+    }
+    NSError *saveError = nil;
+    [context save:&saveError];
+    for(int x = 0; x < [table numberOfRowsInSection:0]; x++)
+    {
+        
+        [self tableView:table commitEditingStyle:UITableViewCellEditingStyleDelete forRowAtIndexPath:[NSIndexPath indexPathForRow:x inSection:0]];
+        //[playlists removeObjectAtIndex:x];
+    }
+    
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -84,6 +106,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     NSFetchRequest *fetch = [[NSFetchRequest alloc] init];
     [fetch setEntity:[NSEntityDescription entityForName:@"Track" inManagedObjectContext:context]];
     playlists = [NSMutableArray arrayWithArray:[context executeFetchRequest:fetch error:nil]];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Clear All" style:UIBarButtonItemStylePlain target:self action:@selector(clearAll)];
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }

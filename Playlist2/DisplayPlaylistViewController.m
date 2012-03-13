@@ -162,9 +162,24 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    SpotifyPlayer *player = [[SpotifyPlayer alloc]initWithUserName:[alertView textFieldAtIndex:0].text password:[alertView textFieldAtIndex:1].text];
-    [player setArray:URLs];
-    [self.navigationController pushViewController:player animated:YES];
+    if([alertView textFieldAtIndex:0].text != nil && [alertView textFieldAtIndex:1].text != nil)
+    {
+        SpotifyPlayer *player = [[SpotifyPlayer alloc]initWithUserName:[alertView textFieldAtIndex:0].text password:[alertView textFieldAtIndex:1].text];
+        //Remove any tracks that weren't found... 
+        NSMutableArray *finalURLs = [NSMutableArray arrayWithArray:URLs];
+        for(int x = 0; x < [finalURLs count]; x++)
+        {
+            if([[finalURLs objectAtIndex:x]isEqualToString:@"spotify:track:5CXfVcqBAtCAHhnGmoxBZ9"])
+            {
+                [finalURLs removeObject:[finalURLs objectAtIndex:x]];
+            }
+        }
+        [player setArray:finalURLs];
+        [self.navigationController pushViewController:player animated:YES];
+    }else{
+        [[alertView textFieldAtIndex:0]setText:@"Enter your User/Pass"];
+        [alertView show];
+    }
 }
 
 

@@ -25,9 +25,9 @@
     managedObjectContext = [self managedObjectContext];
     
     NSManagedObject *track = [[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"Track" inManagedObjectContext:__managedObjectContext] insertIntoManagedObjectContext:__managedObjectContext];
-    [track setValue:@"Jack Johnson" forKey:@"artist"];
-    [track setValue:@"Banana Pancakes" forKey:@"title"];
-    [track setValue:@"SOHTBAY12A6701BF18" forKey:@"id"];
+    [track setValue:@"Bellowhead" forKey:@"artist"];
+    [track setValue:@"London Town" forKey:@"title"];
+    [track setValue:@"SOKNKHN1312A8A5F15" forKey:@"id"];
     
     NSError *error;
     if (![__managedObjectContext save:&error]) {

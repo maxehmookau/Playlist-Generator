@@ -9,9 +9,7 @@
 #import "SpotifyPlayer.h"
 #import "CocoaLibSpotify.h"
 #import "appkey.h"
-#import "AddToPlaylistViewController.h"
 #import "playlist2AppDelegate.h"
-#import "DisplayPlayerPlaylistViewController.h"
 
 @implementation SpotifyPlayer
 
@@ -63,9 +61,19 @@
 #pragma mark - Spotify Delegate
 - (void)session:(SPSession *)aSession didFailToLoginWithError:(NSError *)error
 {
-    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Failed to Login" message:[error localizedDescription] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
     [hud hide:YES];
-    [errorAlert show];
+    if([error code] == 6)
+    {
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Invalid Username!" message:@"WAH WAH Oops." delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [errorAlert show];
+    }else{
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Failed to Login" message:[error localizedDescription] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+        [errorAlert show];
+        [SPSession sharedSession];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
+    
 }
 
 -(void)sessionDidLogOut:(SPSession *)aSession
@@ -220,21 +228,7 @@
     [coverImageView setImage:coverImage];
 }
 
-#pragma mark - Action Sheet
--(void)showActionSheet:(id)sender
-{
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Add Track to Spotify Playlist", nil];
-    [actionSheet showFromToolbar:bottomToolbar];
-}
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if(buttonIndex == 0)
-    {
-        AddToPlaylistViewController *playlistController = [[AddToPlaylistViewController alloc] initWithURI:[trackURIs objectAtIndex:currentTrackPlayingIndex]];
-        [self presentModalViewController:playlistController animated:YES];
-    }
-}
 
 -(void) initAudioSession 
 {
@@ -322,12 +316,7 @@
     manager.isPlaying = NO;
     [[SPSession sharedSession]logout];
 }
--(void)showPlaylist
-{
-    DisplayPlayerPlaylistViewController *playlistVC = [[DisplayPlayerPlaylistViewController alloc] initWithTracks:trackURIs];
-    [playlistVC setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [self presentModalViewController:playlistVC animated:YES];
-}
+
 
 - (void)viewDidLoad
 {
@@ -336,8 +325,6 @@
                              self.navigationItem.hidesBackButton = YES;
                              self.navigationItem.leftBarButtonItem = homeButton;
     
-    UIBarButtonItem *playlistButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(showPlaylist)];
-    self.navigationItem.rightBarButtonItem = playlistButton;
     //[bottomToolbar setFrame:CGRectMake(0, 375, 320, 85)];
     //[self.navigationController setNavigationBarHidden:YES];
     //[[UIApplication sharedApplication]setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:YES];

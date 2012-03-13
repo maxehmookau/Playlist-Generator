@@ -161,7 +161,7 @@
     [historyButton.titleLabel setTextAlignment:UITextAlignmentCenter];
     [recordButton.titleLabel setTextAlignment:UITextAlignmentCenter];
     [self.navigationController setNavigationBarHidden:NO];
-    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:0.416 green:0.980 blue:0.510 alpha:1.000]];
+    [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:0.416 green:0.980 blue:0.7 alpha:1.000]];
     meterObjects = [[NSArray alloc] initWithObjects:meter0, meter1, meter2, meter3, meter4, nil];
     
     toggledElements = [[NSArray alloc] initWithObjects:identifyInstruction, historyInstruction, arrow1, arrow2, nil];
