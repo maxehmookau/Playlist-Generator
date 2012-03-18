@@ -55,6 +55,7 @@
 		507E530F14939DD50066DF21 /* EchonestPlaylistParameterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 507E530D14939DD50066DF21 /* EchonestPlaylistParameterViewController.m */; };
 		507E531014939DD50066DF21 /* EchonestPlaylistParameterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507E530E14939DD50066DF21 /* EchonestPlaylistParameterViewController.xib */; };
 		50876B4314FECC1600D4AB0C /* ionia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50876B4114FECC1600D4AB0C /* ionia.xcdatamodeld */; };
+		5092A65B1516886A0092A443 /* LocalEchoprintConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 5092A65A1516886A0092A443 /* LocalEchoprintConnection.m */; };
 		5094D1091480FD6700EFF0CD /* AnalysisConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5094D1081480FD6700EFF0CD /* AnalysisConnection.mm */; };
 		5094D1141481008E00EFF0CD /* CADebugPrintf.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5094D10C1481008E00EFF0CD /* CADebugPrintf.mm */; };
 		5094D1151481008E00EFF0CD /* Codegen_wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5094D10F1481008E00EFF0CD /* Codegen_wrapper.mm */; };
@@ -174,6 +175,8 @@
 		507E530D14939DD50066DF21 /* EchonestPlaylistParameterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EchonestPlaylistParameterViewController.m; sourceTree = "<group>"; };
 		507E530E14939DD50066DF21 /* EchonestPlaylistParameterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EchonestPlaylistParameterViewController.xib; sourceTree = "<group>"; };
 		50876B4214FECC1600D4AB0C /* ionia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ionia.xcdatamodel; sourceTree = "<group>"; };
+		5092A6591516886A0092A443 /* LocalEchoprintConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalEchoprintConnection.h; sourceTree = "<group>"; };
+		5092A65A1516886A0092A443 /* LocalEchoprintConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalEchoprintConnection.m; sourceTree = "<group>"; };
 		5094D1071480FD6700EFF0CD /* AnalysisConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisConnection.h; sourceTree = "<group>"; };
 		5094D1081480FD6700EFF0CD /* AnalysisConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AnalysisConnection.mm; sourceTree = "<group>"; };
 		5094D10A1481008E00EFF0CD /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 				50FA52EC1481428F00A95D3C /* SongProfileConnection.m */,
 				503C99AD14D826670086AB91 /* EchonestAnalyseConnection.h */,
 				503C99AE14D826680086AB91 /* EchonestAnalyseConnection.mm */,
+				5092A6591516886A0092A443 /* LocalEchoprintConnection.h */,
+				5092A65A1516886A0092A443 /* LocalEchoprintConnection.m */,
 			);
 			name = Analysis;
 			sourceTree = "<group>";
@@ -725,6 +730,7 @@
 				50876B4314FECC1600D4AB0C /* ionia.xcdatamodeld in Sources */,
 				501340B8150F5BEA00263514 /* SPCircularBuffer.m in Sources */,
 				501340C8150F5CD800263514 /* SPPlaybackManager.m in Sources */,
+				5092A65B1516886A0092A443 /* LocalEchoprintConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

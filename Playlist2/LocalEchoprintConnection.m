@@ -1,15 +1,14 @@
 //
-//  AnalysisConnection.m
+//  LocalEchoprintConnection.m
 //  Playlist2
 //
-//  Created by Max Woolf on 26/11/2011.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by Max Woolf on 18/03/2012.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "AnalysisConnection.h"
-#define API_KEY "BNOAEBT3IZYZI6WXI"
+#import "LocalEchoprintConnection.h"
 
-@implementation AnalysisConnection
+@implementation LocalEchoprintConnection
 -(id)initWithRequest:(NSURLRequest *)request delegate:(id)delegate echoprintCode:(NSString *)echoprintCode
 {
     code = echoprintCode;
@@ -19,7 +18,7 @@
 
 -(NSURLRequest *)getRequest
 {
-    NSString *queryString = [[NSString alloc]initWithFormat:@"http://developer.echonest.com/api/v4/song/identify?api_key=%s&version=4.12&code=%@", API_KEY, code];
+    NSString *queryString = [[NSString alloc]initWithFormat:@"http://192.168.0.9:37760/query?version=4.12&code=%@", code];
     NSLog(@"%@", queryString);
     NSURL *queryURL = [[NSURL alloc] initWithString:queryString];
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:queryURL];

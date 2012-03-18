@@ -12,6 +12,7 @@
 #import "SongProfileConnection.h"
 #import "EchonestAnalyseConnection.h"
 #import "playlist2AppDelegate.h"
+#import "LocalEchoprintConnection.h"
 
 @interface AnalyseViewController : UIViewController <MBProgressHUDDelegate, NSURLConnectionDelegate, UIAlertViewDelegate>
 {
@@ -29,6 +30,7 @@
      * An AnalysisConnection to send the echoprint code to. 
      */
     AnalysisConnection *analysisConnection;
+    LocalEchoprintConnection *localConnection;
     EchonestAnalyseConnection *echonestUpload;
     SongProfileConnection *songProfileConnection;
     NSMutableData *receivedData;

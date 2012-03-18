@@ -12,6 +12,7 @@
 #import "EchonestPlaylistParameterViewController.h"
 #import "EchonestAnalyseConnection.h"
 #import "IdentifyViewController.h"
+#import "LocalEchoprintConnection.h"
 
 @implementation AnalyseViewController
 @synthesize recordingURL, artistField, trackField;
@@ -42,8 +43,11 @@ extern const char * GetPCMFromFile(char * filename);
 
 -(void)connectToEchonest
 {
-    analysisConnection = [[AnalysisConnection alloc] initWithRequest:nil delegate:self echoprintCode:[self getEchoprintCode]];
-    [analysisConnection start];
+    //analysisConnection = [[AnalysisConnection alloc] initWithRequest:nil delegate:self echoprintCode:[self getEchoprintCode]];
+    //[analysisConnection start];
+    
+    localConnection = [[LocalEchoprintConnection alloc] initWithRequest:nil delegate:self echoprintCode:[self getEchoprintCode]];
+    [localConnection start];
 }
 
 -(void)getTrackID
@@ -223,7 +227,6 @@ extern const char * GetPCMFromFile(char * filename);
         NSLog(@"%@", [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding]);
         [self getAnalysisDataOf:[[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding]];
     }
-    
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
