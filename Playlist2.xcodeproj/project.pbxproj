@@ -18,6 +18,7 @@
 		501C24E814D89BDE00B3BB49 /* nextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 501C24E714D89BDE00B3BB49 /* nextButton.png */; };
 		5022F1B514C9E75F007B864B /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5022F1B414C9E75F007B864B /* libstdc++.dylib */; };
 		5022F1B714C9E76B007B864B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5022F1B614C9E76B007B864B /* CFNetwork.framework */; };
+		502E800F15163CDF009B9228 /* libechoprint-codegen-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 502E800E15163CDF009B9228 /* libechoprint-codegen-ios.a */; };
 		502FB91D14FD09D800618215 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 502FB91B14FD09D800618215 /* background.png */; };
 		502FB91E14FD09D800618215 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 502FB91C14FD09D800618215 /* background@2x.png */; };
 		502FB92314FD11F300618215 /* drawnarrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 502FB92114FD11F300618215 /* drawnarrow.png */; };
@@ -58,7 +59,6 @@
 		5094D1141481008E00EFF0CD /* CADebugPrintf.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5094D10C1481008E00EFF0CD /* CADebugPrintf.mm */; };
 		5094D1151481008E00EFF0CD /* Codegen_wrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5094D10F1481008E00EFF0CD /* Codegen_wrapper.mm */; };
 		5094D1161481008E00EFF0CD /* GetPCMFromFile.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5094D1121481008E00EFF0CD /* GetPCMFromFile.mm */; };
-		5094D1171481008E00EFF0CD /* libechoprint-codegen-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5094D1131481008E00EFF0CD /* libechoprint-codegen-ios.a */; };
 		5094D11A1481041E00EFF0CD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5094D1191481041E00EFF0CD /* AudioToolbox.framework */; };
 		5094D11C1481043900EFF0CD /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5094D11B1481043900EFF0CD /* CoreAudio.framework */; };
 		5094D11E1481045E00EFF0CD /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5094D11D1481045D00EFF0CD /* MediaPlayer.framework */; };
@@ -124,6 +124,7 @@
 		5022F1B314C9E66D007B864B /* appkey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appkey.h; sourceTree = "<group>"; };
 		5022F1B414C9E75F007B864B /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		5022F1B614C9E76B007B864B /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		502E800E15163CDF009B9228 /* libechoprint-codegen-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libechoprint-codegen-ios.a"; sourceTree = "<group>"; };
 		502FB91B14FD09D800618215 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		502FB91C14FD09D800618215 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		502FB92114FD11F300618215 /* drawnarrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drawnarrow.png; sourceTree = "<group>"; };
@@ -184,7 +185,6 @@
 		5094D1101481008E00EFF0CD /* Codegen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Codegen.h; sourceTree = "<group>"; };
 		5094D1111481008E00EFF0CD /* GetPCMFromFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetPCMFromFile.h; sourceTree = "<group>"; };
 		5094D1121481008E00EFF0CD /* GetPCMFromFile.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GetPCMFromFile.mm; sourceTree = "<group>"; };
-		5094D1131481008E00EFF0CD /* libechoprint-codegen-ios.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libechoprint-codegen-ios.a"; sourceTree = "<group>"; };
 		5094D1191481041E00EFF0CD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		5094D11B1481043900EFF0CD /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		5094D11D1481045D00EFF0CD /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -265,7 +265,7 @@
 				50A1E5C2147FE4AF005F5340 /* UIKit.framework in Frameworks */,
 				50A1E5C4147FE4AF005F5340 /* Foundation.framework in Frameworks */,
 				50A1E5C6147FE4AF005F5340 /* CoreGraphics.framework in Frameworks */,
-				5094D1171481008E00EFF0CD /* libechoprint-codegen-ios.a in Frameworks */,
+				502E800F15163CDF009B9228 /* libechoprint-codegen-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,7 +414,7 @@
 				5094D1101481008E00EFF0CD /* Codegen.h */,
 				5094D1111481008E00EFF0CD /* GetPCMFromFile.h */,
 				5094D1121481008E00EFF0CD /* GetPCMFromFile.mm */,
-				5094D1131481008E00EFF0CD /* libechoprint-codegen-ios.a */,
+				502E800E15163CDF009B9228 /* libechoprint-codegen-ios.a */,
 			);
 			name = "Echoprint Library";
 			sourceTree = "<group>";
