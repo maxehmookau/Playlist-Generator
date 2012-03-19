@@ -42,10 +42,7 @@ extern const char * GetPCMFromFile(char * filename);
 }
 
 -(void)connectToEchonest
-{
-    //analysisConnection = [[AnalysisConnection alloc] initWithRequest:nil delegate:self echoprintCode:[self getEchoprintCode]];
-    //[analysisConnection start];
-    
+{    
     localConnection = [[LocalEchoprintConnection alloc] initWithRequest:nil delegate:self echoprintCode:[self getEchoprintCode]];
     [localConnection start];
 }
@@ -197,41 +194,12 @@ extern const char * GetPCMFromFile(char * filename);
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)d {
     [receivedData appendData:d];
-    jsonData = [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding];
-    if(connection == analysisConnection)
-    {
-        //Deal with identifications
-        [self getTrackID];
-    }else if(connection == songProfileConnection)
-    {
-        //Get track data
-        [self getTrackData];
-        
-        //Add the track to the persistent store
-        appDelegate = (playlist2AppDelegate *)[[UIApplication sharedApplication] delegate];
-        context = appDelegate.managedObjectContext;
-        NSManagedObject *newTrack = [[NSManagedObject alloc] initWithEntity:[NSEntityDescription entityForName:@"Track"inManagedObjectContext:context] insertIntoManagedObjectContext:context];
-        
-        [newTrack setValue:trackArtist forKey:@"artist"];
-        [newTrack setValue:trackTitle forKey:@"title"];
-        [newTrack setValue:trackID forKey:@"id"];
-        
-        NSError *error;
-        if (![context save:&error]) {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }
-    }else if(connection == echonestUpload)
-    {
-        [HUD hide:YES afterDelay:1];
-        NSLog(@"Getting Data");
-        NSLog(@"%@", [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding]);
-        [self getAnalysisDataOf:[[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding]];
-    }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-
+    jsonData = [[NSString alloc] initWithData:receivedData encoding:NSUTF8StringEncoding];
+     
 }
 
 #pragma mark - View lifecycle
