@@ -44,6 +44,7 @@ extern const char * GetPCMFromFile(char * filename);
 {
     analysisConnection = [[AnalysisConnection alloc] initWithRequest:nil delegate:self echoprintCode:[self getEchoprintCode]];
     [analysisConnection start];
+    //epServerConn = [[EchoprintServerConnection alloc] initWithCode:[self getEchoprintCode] delegate:self];
 }
 
 -(void)getTrackID
@@ -223,12 +224,18 @@ extern const char * GetPCMFromFile(char * filename);
         NSLog(@"%@", [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding]);
         [self getAnalysisDataOf:[[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding]];
     }
-    
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
 
+    
+    //Then find the ID...
+}
+
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog([error localizedDescription]);
 }
 
 #pragma mark - View lifecycle
