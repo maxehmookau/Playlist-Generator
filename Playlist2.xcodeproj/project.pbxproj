@@ -54,7 +54,6 @@
 		507C4C5E149E797E00A7EEE7 /* URIToURLConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 507C4C5D149E797E00A7EEE7 /* URIToURLConverter.m */; };
 		507E530F14939DD50066DF21 /* EchonestPlaylistParameterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 507E530D14939DD50066DF21 /* EchonestPlaylistParameterViewController.m */; };
 		507E531014939DD50066DF21 /* EchonestPlaylistParameterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 507E530E14939DD50066DF21 /* EchonestPlaylistParameterViewController.xib */; };
-		507FD4771517D180003F9F01 /* EchoprintServerConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 507FD4761517D180003F9F01 /* EchoprintServerConnection.m */; };
 		50876B4314FECC1600D4AB0C /* ionia.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50876B4114FECC1600D4AB0C /* ionia.xcdatamodeld */; };
 		5094D1091480FD6700EFF0CD /* AnalysisConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5094D1081480FD6700EFF0CD /* AnalysisConnection.mm */; };
 		5094D1141481008E00EFF0CD /* CADebugPrintf.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5094D10C1481008E00EFF0CD /* CADebugPrintf.mm */; };
@@ -174,8 +173,6 @@
 		507E530C14939DD50066DF21 /* EchonestPlaylistParameterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchonestPlaylistParameterViewController.h; sourceTree = "<group>"; };
 		507E530D14939DD50066DF21 /* EchonestPlaylistParameterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EchonestPlaylistParameterViewController.m; sourceTree = "<group>"; };
 		507E530E14939DD50066DF21 /* EchonestPlaylistParameterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EchonestPlaylistParameterViewController.xib; sourceTree = "<group>"; };
-		507FD4751517D180003F9F01 /* EchoprintServerConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchoprintServerConnection.h; sourceTree = "<group>"; };
-		507FD4761517D180003F9F01 /* EchoprintServerConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EchoprintServerConnection.m; sourceTree = "<group>"; };
 		50876B4214FECC1600D4AB0C /* ionia.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ionia.xcdatamodel; sourceTree = "<group>"; };
 		5094D1071480FD6700EFF0CD /* AnalysisConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisConnection.h; sourceTree = "<group>"; };
 		5094D1081480FD6700EFF0CD /* AnalysisConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AnalysisConnection.mm; sourceTree = "<group>"; };
@@ -331,8 +328,6 @@
 				50FA52EC1481428F00A95D3C /* SongProfileConnection.m */,
 				503C99AD14D826670086AB91 /* EchonestAnalyseConnection.h */,
 				503C99AE14D826680086AB91 /* EchonestAnalyseConnection.mm */,
-				507FD4751517D180003F9F01 /* EchoprintServerConnection.h */,
-				507FD4761517D180003F9F01 /* EchoprintServerConnection.m */,
 			);
 			name = Analysis;
 			sourceTree = "<group>";
@@ -730,7 +725,6 @@
 				50876B4314FECC1600D4AB0C /* ionia.xcdatamodeld in Sources */,
 				501340B8150F5BEA00263514 /* SPCircularBuffer.m in Sources */,
 				501340C8150F5CD800263514 /* SPPlaybackManager.m in Sources */,
-				507FD4771517D180003F9F01 /* EchoprintServerConnection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,7 +798,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				HEADER_SEARCH_PATHS = "\"/usr/local/include/boost-1_35\"";
 				INFOPLIST_FILE = "Playlist2/Playlist2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -831,7 +825,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = NO;
 				HEADER_SEARCH_PATHS = "\"/usr/local/include/boost-1_35\"";
 				INFOPLIST_FILE = "Playlist2/Playlist2-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",

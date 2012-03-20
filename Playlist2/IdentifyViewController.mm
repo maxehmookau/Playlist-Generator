@@ -63,7 +63,7 @@
     {
         if([progressView progress] != 1.0)
         {
-            [progressView setProgress:[progressView progress] + 0.0020];
+            [progressView setProgress:[progressView progress] + 0.0025];
         }else{
             //Stop everything
             [inputRecorder stop];

@@ -63,7 +63,7 @@
 	int currentCoreAudioSampleRate;
 	SPTrack *currentTrack;
 	NSTimeInterval trackPosition;
-	id <SPPlaybackManagerDelegate> delegate;
+	id <SPPlaybackManagerDelegate> __weak delegate;
     NSMethodSignature *incrementTrackPositionMethodSignature;
 	NSInvocation *incrementTrackPositionInvocation;
 }
@@ -79,7 +79,7 @@
 @property (nonatomic, readonly, strong) SPTrack *currentTrack;
 
 /** Returns the manager's delegate. */
-@property (nonatomic, readwrite) id <SPPlaybackManagerDelegate> delegate;
+@property (nonatomic, readwrite, weak) id <SPPlaybackManagerDelegate> delegate;
 
 /** Returns the session that is performing decoding and playback. */
 @property (nonatomic, readonly, strong) SPSession *playbackSession;
